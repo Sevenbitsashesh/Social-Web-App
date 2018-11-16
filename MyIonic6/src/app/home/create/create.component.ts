@@ -46,6 +46,8 @@ export class CreateComponent implements OnInit {
     };
   ngOnInit() {
   }
+  saveProfile() {
+  }
   constructor(public rest: RestService, formBuilder: FormBuilder) {
 
     this.myForm = formBuilder.group({
@@ -80,13 +82,6 @@ export class CreateComponent implements OnInit {
         }
     );
 
-  // saveProfile() {
-  //   if (this.username != null) {
-  //       const user = { username: this.username,
-  //         password: this.password,
-  //         email: this.email };
-  //          this.rest.addInfo(user);
-  //   }
-  // }
+
 }
 }

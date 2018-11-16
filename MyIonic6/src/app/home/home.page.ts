@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   users: any;
-  binding: string = localStorage.getItem('userid');
+  loggedUsers: string = localStorage.getItem('userid');
   constructor(public restProvider: RestService, public route: Router) {
     this.restProvider.checkLogin();
   }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ import { UpdateComponent } from '../app/home/update/update.component';
 import { DeleteComponent } from '../app/home/delete/delete.component';
 import { ListComponent } from './home/list/list.component';
 import { AngularFirestoreModule} from 'angularfire2/firestore';
+import { GlobalErrorService } from './Rest/global_error';
 @NgModule({
   declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, HomePage, CreateComponent,
     ListComponent, UpdateComponent, DeleteComponent],
@@ -35,7 +36,9 @@ import { AngularFirestoreModule} from 'angularfire2/firestore';
     SplashScreen,
     AngularFireAuth,
     RestService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    GlobalErrorService,
+    { provide: ErrorHandler, useClass: GlobalErrorService }
   ],
   bootstrap: [AppComponent]
 })
