@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  
+ <ion-grid>
+   <ion-row> 
+     <ion-col col-5>
+        <label>Userid</label>
+     </ion-col>
+     <ion-col col-5>
+      <ion-input placeholder="userid" [(ngModel)]="userid">
+      </ion-input>
+      
+      </ion-col>
+   </ion-row>
+   <ion-row> 
+      <ion-col col-5>
+         <label>Password</label>
+      </ion-col>
+      <ion-col col-5>
+       <ion-input  placeholder="Password" [(ngModel)]="pass">
+       </ion-input>
+       
+       </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-5></ion-col>
+      <ion-col col-5>
+        <ion-label *ngIf="message">
+          {{message}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+        <ion-col col-5>
+            
+        </ion-col>
+        <ion-col col-5>
+         <ion-button  (click)="getLogin(userid,pass)" type="button">
+        Login
+         </ion-button>
+         
+         </ion-col>
+      </ion-row>
+      <ion-row> 
+        <ion-col col-5>
+            
+        </ion-col>
+        <ion-col col-5>
+            Don't have an account
+         <ion-button type="button" (click)="createAcc(userid,pass)" type="button">
+        create account
+         </ion-button>
+         </ion-col>
+      </ion-row>
+   </ion-grid>
+   <router-outlet>
+    
+  </router-outlet>
+  
+</ion-content>

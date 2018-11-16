@@ -1,0 +1,59 @@
+<form [formGroup]="myForm">
+    <ion-item>
+        <ion-label danger>*</ion-label>
+    <ion-label>username :</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Mobile :</ion-label>
+          <ion-input type="mobile"></ion-input>
+        </ion-item>
+        <ion-item>
+           * <ion-label> Gender: </ion-label>
+              <ion-radio-group>
+            <ion-item>
+              <ion-label>Male</ion-label>
+              <ion-radio value="Male" checked></ion-radio>              
+            </ion-item>
+            <ion-item>
+                <ion-label>Female</ion-label>
+                <ion-radio value="FeMale"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        
+            </ion-item>
+          
+            
+            <ion-item>
+                <ion-label>Email :</ion-label>
+                  <ion-input type="Email" [(ngModel)]="email" name="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>DOB :</ion-label>
+                      <ion-input type="date"></ion-input>
+                    </ion-item>
+                <ion-item>
+                    <ion-label>Password :</ion-label>
+                      <ion-input type="Password" [(ngModel)]="password" name="password"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Confirm Password :</ion-label>
+                          <ion-input type="Password"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Home Address :</ion-label>
+                              <ion-input type="text"></ion-input>
+                            </ion-item>
+                            <ion-item>
+                              
+                                <ion-label>Profile Pic :</ion-label>
+                                  <ion-button>
+                                      Select Image
+                                  </ion-button>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Hobbies :</ion-label>
+                                      <ion-input type="text"></ion-input>
+                                    </ion-item>
+                                    <ion-button padding>Create</ion-button>
+                                  </form>

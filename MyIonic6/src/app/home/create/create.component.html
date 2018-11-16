@@ -1,0 +1,41 @@
+<form [formGroup]="myForm">
+    <ion-item>
+        <ion-label>*</ion-label>
+    <ion-label>username :</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input> 
+      <ng-container *ngFor="let validation of validation_messages.username">
+      <div class="error-message" *ngIf="myForm.get('username').hasError(validation.type) && myForm.controls['username'].touched">{{validation.message}}</div>   
+    </ng-container>
+    </ion-item>
+    <ion-item>
+        <ion-label>*</ion-label>
+        <ion-label>Mobile :</ion-label>
+          <ion-input type="mobile" formControlName="mobile"></ion-input>
+          <ng-container *ngFor="let validation of validation_messages.mobile">
+              <div class="error-message" *ngIf="myForm.get('mobile').hasError(validation.type) && myForm.controls['mobile'].touched">{{validation.message}}</div>   
+            </ng-container>
+        </ion-item>
+        <ion-item>
+            <ion-label>Email :</ion-label>
+              <ion-input type="Email" formControlName="email" name="email"></ion-input>
+              <ng-container *ngFor="let validation of validation_messages.email">
+                  <div class="error-message" *ngIf="myForm.get('email').hasError(validation.type) && myForm.controls['email'].touched">{{validation.message}}</div>   
+                </ng-container>
+            </ion-item>
+            <ion-item>
+                    
+                <ion-label>Password :</ion-label>
+                  <ion-input type="Password"formControlName="password"></ion-input>
+                  <ng-container *ngFor="let validation of validation_messages.password">
+                    <div class="error-message" *ngIf="myForm.get('password').hasError(validation.type) && myForm.controls['password'].touched">{{validation.message}}</div>   
+                  </ng-container>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Confirm Password :</ion-label>
+                      <ion-input type="Password" formControlName="cpassword"></ion-input>
+                      <ng-container *ngFor="let validation of validation_messages.cpassword">
+                        <div class="error-message" *ngIf="get('cpassword').hasError(validation.type) && myForm.controls['cpassword'].touched">{{validation.message}}</div>   
+                      </ng-container>
+                    </ion-item>
+                                    <ion-button padding [disabled]="myForm.invalid">Create</ion-button>
+                                  </form>
