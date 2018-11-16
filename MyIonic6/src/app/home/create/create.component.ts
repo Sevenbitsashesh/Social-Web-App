@@ -71,12 +71,9 @@ export class CreateComponent implements OnInit {
         Validators.required
       ])),
       matching_passwords: this.matching_passwords_group
-    },
-    (myForm: FormGroup) => {
-      return PasswordValidator.areEqual(myForm);
     }
     );
-
+// ashesh
   // saveProfile() {
   //   if (this.username != null) {
   //       const user = { username: this.username,
