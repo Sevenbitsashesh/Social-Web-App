@@ -34,9 +34,15 @@
                     <ion-label>Confirm Password :</ion-label>
                       <ion-input type="Password" formControlName="cpassword"></ion-input>
                       <ng-container *ngFor="let validation of validation_messages.cpassword">
-                        <div class="error-message" *ngIf="get('cpassword').hasError(validation.type) && myForm.controls['cpassword'].touched">{{validation.message}}</div>   
+                        <div class="error-message" *ngIf="myForm.get('cpassword').hasError(validation.type) && myForm.controls['cpassword'].touched">{{validation.message}}</div>
                       </ng-container>
-                    </ion-item>
+                </ion-item>
+                      <ion-item>
+                        <ion-label>Home Address :</ion-label>
+                          <ion-textarea formControlName="address"></ion-textarea>
+                          <ng-container *ngFor="let validation of validation_messages.address">
+                            <div class="error-message" *ngIf="myForm.get('address').hasError(validation.type) && myForm.controls['address'].touched">{{validation.message}}</div>
+                          </ng-container>
+                        </ion-item>
                                     <ion-button padding [disabled]="myForm.invalid">Create</ion-button>
                                   </form>
-                                  

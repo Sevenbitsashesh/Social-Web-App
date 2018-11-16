@@ -13,6 +13,7 @@ export class CreateComponent implements OnInit {
   email: string;
   mobile: string;
   cpassword: string;
+  address: string;
   myForm;
   matching_passwords_group: FormGroup;
   validation_messages = {
@@ -38,6 +39,9 @@ export class CreateComponent implements OnInit {
       ],
       'cpassword': [
         { type: 'areEqual', message: 'Confirm Password is not matched' }
+      ],
+      'address': [
+        { type: 'pattern', message: 'Maximum 50 Character' }
       ]
     };
   ngOnInit() {
@@ -70,11 +74,12 @@ export class CreateComponent implements OnInit {
       cpassword: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      matching_passwords: this.matching_passwords_group
-    }
+      address: new FormControl('', Validators.compose([
+        Validators.pattern('/^[a-z]{0,10}$/')
+      ]))
+        }
     );
-    // assda
-// ashesh
+
   // saveProfile() {
   //   if (this.username != null) {
   //       const user = { username: this.username,
