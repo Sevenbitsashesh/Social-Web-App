@@ -75,7 +75,7 @@ export class CreateComponent implements OnInit {
         Validators.required
       ])),
       address: new FormControl('', Validators.compose([
-        Validators.pattern('/^[a-z]{0,10}$/')
+        Validators.pattern('^[a-z]{1,100}$')
       ]))
         }
     );

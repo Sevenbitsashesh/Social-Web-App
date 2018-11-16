@@ -43,14 +43,20 @@ export class LoginComponent implements OnInit {
      });
      this.message = 'Please check your login details';
   }
+  // Create user in firebase Authentication
   createAcc(userid: string, pass: string) {
     this.fireauth.auth.createUserWithEmailAndPassword(userid, pass).then(user => {
       this.createUser(userid);
       this.getLogin(userid, pass);
     });
   }
+
+  // create user in Firestore
   createUser(userid: string) {
-    this.ref.set(userid);
+    const user = {
+      userid: this.userid
+    };
+    this.rest.addInfo(user);
   }
 
 
