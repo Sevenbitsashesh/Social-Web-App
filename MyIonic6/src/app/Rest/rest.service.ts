@@ -13,6 +13,7 @@ export class RestService {
   model: User;
   users: AngularFirestoreCollection<UserDetails>;
   usersDoc: AngularFirestoreDocument<UserDetails>;
+  loggedUser: any[];
   constructor(public http: HttpClient, public router: Router, private db: AngularFirestore) {
     this.users = this.db.collection<UserDetails>(configusers.collection_endpoint);
   }
@@ -21,8 +22,9 @@ export class RestService {
   addInfo(user) {
     this.users.add(user);
   }
-  // Error handler
-
+  getLogged() {
+    return localStorage.getItem('userid');
+  }
   // Checking Login
   checkLogin() {
     if (localStorage.getItem('userid') !== null ) {

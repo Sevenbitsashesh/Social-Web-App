@@ -16,6 +16,7 @@ export class CreateComponent implements OnInit {
   address: string;
   myForm;
   matching_passwords_group: FormGroup;
+  loggedEmail: string;
   validation_messages = {
     'username': [
         { type: 'required', message: 'Username is required' },
@@ -49,7 +50,7 @@ export class CreateComponent implements OnInit {
   saveProfile() {
   }
   constructor(public rest: RestService, formBuilder: FormBuilder) {
-
+    this.loggedEmail = rest.getLogged();
     this.myForm = formBuilder.group({
       username: new FormControl('', Validators.compose([
         Validators.maxLength(25),
@@ -65,9 +66,9 @@ export class CreateComponent implements OnInit {
         Validators.required
       ])
       ),
-      email: new FormControl('', Validators.compose([
+      email: new FormControl({value: this.loggedEmail, disabled : true}, Validators.compose([
         Validators.required,
-        Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        // Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -81,7 +82,7 @@ export class CreateComponent implements OnInit {
       ]))
         }
     );
-
+        
 
 }
 }

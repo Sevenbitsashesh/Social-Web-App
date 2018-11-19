@@ -18,7 +18,7 @@
         <ion-item>
             <ion-label class="required">*</ion-label>
             <ion-label>Email :</ion-label>
-              <ion-input type="Email" formControlName="email" name="email" [disabled]=true></ion-input>
+              <ion-input type="Email" formControlName="email" name="email"></ion-input>
               <ng-container *ngFor="let validation of validation_messages.email">
                   <div class="error-message" *ngIf="myForm.get('email').hasError(validation.type) && myForm.controls['email'].touched">{{validation.message}}</div>   
                 </ng-container>
@@ -48,9 +48,9 @@
                         </ion-item>
                         <ion-item>
                           <ion-label>Hobbies :</ion-label>
-                            <ion-textarea formControlName="address"></ion-textarea>
-                            <ng-container *ngFor="let validation of validation_messages.address">
-                              <div class="error-message" *ngIf="myForm.get('address').hasError(validation.type) && myForm.controls['address'].touched">{{validation.message}}</div>
+                            <ion-textarea formControlName="hobbies"></ion-textarea>
+                            <ng-container *ngFor="let validation of validation_messages.hobbies">
+                              <div class="error-message" *ngIf="myForm.get('address').hasError(validation.type) && myForm.controls['hobbies'].touched">{{validation.message}}</div>
                             </ng-container>
                           </ion-item>
                                     <ion-button padding [disabled]="myForm.invalid">Create</ion-button>
