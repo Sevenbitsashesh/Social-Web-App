@@ -79,10 +79,11 @@ export class CreateComponent implements OnInit {
       ])),
       address: new FormControl('', Validators.compose([
         Validators.pattern('^[a-z]{1,100}$')
-      ]))
+      ])),
+      hobbies: new FormControl('', Validators.compose([
+      ]) )
         }
     );
-        
 
 }
 }
