@@ -15,16 +15,23 @@ export class CreateComponent implements OnInit {
   mobile: string;
   cpassword: string;
   address: string;
-  myForm;
+  dob: string;
+  gender: string;
+  myForm: FormGroup;
   matching_passwords_group: FormGroup;
   loggedEmail: string;
   saveProfile() {
-    let user = {
-      userid: this.username,
-      email: this.email
+    let model = {
+      'userid': this.myForm.get('username').value,
+      'email': this.myForm.get('email').value,
+      'password': this.myForm.get('password').value,
+      'address': this.myForm.get('address').value,
+      'mobile': this.myForm.get('mobile').value,
+       'gender': this.myForm.get('gender').value,
+      'dob': this.myForm.get('dob').value
     }
-    console.log(user);
-    this.rest.addInfo(user);
+      this.rest.addInfo(model);
+     this.myForm.reset();
   }
   validation_messages = {
     'username': [
@@ -89,7 +96,11 @@ export class CreateComponent implements OnInit {
         Validators.pattern('^[a-z]{1,100}$')
       ])),
       hobbies: new FormControl('', Validators.compose([
-      ]) )
+      ])),
+      dob: new FormControl('', Validators.compose([
+      ])),
+      gender: new FormControl('Male', Validators.compose([
+      ])),
         }
     );
 

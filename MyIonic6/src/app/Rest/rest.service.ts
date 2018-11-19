@@ -6,11 +6,12 @@ import { configusers } from '../models/users_firestore';
 import { UserDetails } from '../models/user_model';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Rx';
+import { FormGroup } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
-  model: User;
+  model: UserDetails;
   users: AngularFirestoreCollection<UserDetails>;
   usersDoc: AngularFirestoreDocument<UserDetails>;
   loggedUser: any[];
@@ -19,8 +20,10 @@ export class RestService {
   }
 
   // Adding user info
-  addInfo(user) {
-    this.users.add(user);
+  addInfo(model) {
+    console.log(model);
+    this.users.add(model);
+
   }
   getLogged() {
     return localStorage.getItem('userid');
@@ -34,10 +37,4 @@ export class RestService {
     }
   }
 }
-// Login model
-export class User {
-  userid: string;
-  constructor(userid: Object = {} ) {
-    Object.assign(this, userid);
-}
-}
+

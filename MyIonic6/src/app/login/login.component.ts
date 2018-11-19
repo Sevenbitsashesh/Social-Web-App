@@ -10,7 +10,7 @@ import { UserDetails } from '../models/user_model';
 import { firestore } from 'firebase';
 import { HomePage } from '../home/home.page';
 import { Component, OnInit, Injectable } from '@angular/core';
-import { RestService, User } from '../Rest/rest.service';
+import { RestService } from '../Rest/rest.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup, NgModel  } from '@angular/forms';
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
       userid: userid,
       password: password
     };
-    this.rest.addInfo(user);
+   // this.rest.addInfo(user);
   }
 
 
