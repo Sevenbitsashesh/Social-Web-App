@@ -13,8 +13,10 @@ export class CreateComponent implements OnInit {
   email: string;
   mobile: string;
   cpassword: string;
+  address: string;
   myForm;
   matching_passwords_group: FormGroup;
+  loggedEmail: string;
   validation_messages = {
     'username': [
         { type: 'required', message: 'Username is required' },
@@ -38,12 +40,17 @@ export class CreateComponent implements OnInit {
       ],
       'cpassword': [
         { type: 'areEqual', message: 'Confirm Password is not matched' }
+      ],
+      'address': [
+        { type: 'pattern', message: 'Maximum 50 Character' }
       ]
     };
   ngOnInit() {
   }
+  saveProfile() {
+  }
   constructor(public rest: RestService, formBuilder: FormBuilder) {
-
+    this.loggedEmail = rest.getLogged();
     this.myForm = formBuilder.group({
       username: new FormControl('', Validators.compose([
         Validators.maxLength(25),
@@ -59,9 +66,9 @@ export class CreateComponent implements OnInit {
         Validators.required
       ])
       ),
-      email: new FormControl('', Validators.compose([
+      email: new FormControl({value: this.loggedEmail, disabled : true}, Validators.compose([
         Validators.required,
-        Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        // Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -70,20 +77,13 @@ export class CreateComponent implements OnInit {
       cpassword: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      matching_passwords: this.matching_passwords_group
-    },
-    (myForm: FormGroup) => {
-      return PasswordValidator.areEqual(myForm);
-    }
+      address: new FormControl('', Validators.compose([
+        Validators.pattern('^[a-z]{1,100}$')
+      ])),
+      hobbies: new FormControl('', Validators.compose([
+      ]) )
+        }
     );
 
-  // saveProfile() {
-  //   if (this.username != null) {
-  //       const user = { username: this.username,
-  //         password: this.password,
-  //         email: this.email };
-  //          this.rest.addInfo(user);
-  //   }
-  // }
 }
 }
