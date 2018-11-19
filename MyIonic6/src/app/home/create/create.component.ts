@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../Rest/rest.service';
 import { PasswordValidator } from '../../Rest/validation';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { userInfo } from 'os';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -17,6 +18,14 @@ export class CreateComponent implements OnInit {
   myForm;
   matching_passwords_group: FormGroup;
   loggedEmail: string;
+  saveProfile() {
+    let user = {
+      userid: this.username,
+      email: this.email
+    }
+    console.log(user);
+    this.rest.addInfo(user);
+  }
   validation_messages = {
     'username': [
         { type: 'required', message: 'Username is required' },
@@ -47,8 +56,7 @@ export class CreateComponent implements OnInit {
     };
   ngOnInit() {
   }
-  saveProfile() {
-  }
+  
   constructor(public rest: RestService, formBuilder: FormBuilder) {
     this.loggedEmail = rest.getLogged();
     this.myForm = formBuilder.group({
@@ -86,4 +94,5 @@ export class CreateComponent implements OnInit {
     );
 
 }
+
 }
