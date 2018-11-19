@@ -22,7 +22,9 @@ export class RestService {
   // Adding user info
   addInfo(model) {
     console.log(model);
-    this.users.add(model);
+    if (this.users.add(model)) {
+      this.router.navigate(['/userhome']);
+    }
 
   }
   getLogged() {

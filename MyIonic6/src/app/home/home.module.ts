@@ -10,6 +10,7 @@ import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ListComponent } from '../home/list/list.component';
+import { UserhomeComponent } from './userhome/userhome.component';
 @NgModule({
   imports: [
     HttpClientModule,
@@ -23,7 +24,7 @@ import { ListComponent } from '../home/list/list.component';
       }
     ])
   ],
-  declarations: [],
+  declarations: [UserhomeComponent],
   exports: []
 })
 export class HomePageModule {
