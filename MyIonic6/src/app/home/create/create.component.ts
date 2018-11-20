@@ -20,19 +20,7 @@ export class CreateComponent implements OnInit {
   myForm: FormGroup;
   matching_passwords_group: FormGroup;
   loggedEmail: string;
-  saveProfile() {
-    let model = {
-      'userid': this.myForm.get('username').value,
-      'email': this.myForm.get('email').value,
-      'password': this.myForm.get('password').value,
-      'address': this.myForm.get('address').value,
-      'mobile': this.myForm.get('mobile').value,
-       'gender': this.myForm.get('gender').value,
-      'dob': this.myForm.get('dob').value
-    }
-      this.rest.addInfo(model);
-     this.myForm.reset();
-  }
+
   validation_messages = {
     'username': [
         { type: 'required', message: 'Username is required' },
@@ -61,9 +49,21 @@ export class CreateComponent implements OnInit {
         { type: 'pattern', message: 'Maximum 50 Character' }
       ]
     };
+    saveProfile() {
+      const model = {
+        'userid': this.myForm.get('username').value,
+        'email': this.myForm.get('email').value,
+        'password': this.myForm.get('password').value,
+        'address': this.myForm.get('address').value,
+        'mobile': this.myForm.get('mobile').value,
+         'gender': this.myForm.get('gender').value,
+        'dob': this.myForm.get('dob').value
+      };
+        this.rest.addInfo(model);
+    }
   ngOnInit() {
   }
-  
+
   constructor(public rest: RestService, formBuilder: FormBuilder) {
     this.loggedEmail = rest.getLogged();
     this.myForm = formBuilder.group({
