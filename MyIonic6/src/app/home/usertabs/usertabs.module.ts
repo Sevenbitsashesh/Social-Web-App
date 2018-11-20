@@ -19,6 +19,7 @@ import { UsersettingComponent } from '../usersetting/usersetting.component';
     TabRoutingmodule
   ],
   declarations: [UsertabsPage, UserhomeComponent, UsersettingComponent],
+  exports: [ UsertabsPage ],
   bootstrap: [UsertabsPage]
 })
 export class UsertabsPageModule {}

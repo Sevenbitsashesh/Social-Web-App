@@ -19,8 +19,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CreateComponent } from '../app/home/create/create.component';
 import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { GlobalErrorService } from './Rest/global_error';
+import { UserhomeComponent } from './home/userhome/userhome.component';
 @NgModule({
-  declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, HomePage, CreateComponent],
+  declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, HomePage, CreateComponent, UserhomeComponent],
   entryComponents: [],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, FormsModule,
     AngularFireModule.initializeApp(Firebase_Config),

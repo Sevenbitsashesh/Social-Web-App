@@ -24,7 +24,7 @@ import { UsertabsPageModule } from './usertabs/usertabs.module';
     ])
   ],
   declarations: [UserhomeComponent, UsersettingComponent],
-  exports: []
+  exports: [ UserhomeComponent ]
 })
 export class HomePageModule {
 
