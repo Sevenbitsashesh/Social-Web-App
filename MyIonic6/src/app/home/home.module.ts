@@ -4,19 +4,18 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { HomePage } from './home.page';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { CreateComponent } from './create/create.component';
-import { UpdateComponent } from './update/update.component';
-import { DeleteComponent } from './delete/delete.component';
-import { ListComponent } from '../home/list/list.component';
 
+import { HomePage } from './home.page';
+import { UserhomeComponent } from './userhome/userhome.component';
+import { UsersettingComponent } from './usersetting/usersetting.component';
+import { UsertabsPageModule } from './usertabs/usertabs.module';
 @NgModule({
   imports: [
     HttpClientModule,
     CommonModule,
     FormsModule,
     IonicModule,
+    UsertabsPageModule,
     RouterModule.forChild([
       {
         path: '',
@@ -24,7 +23,7 @@ import { ListComponent } from '../home/list/list.component';
       }
     ])
   ],
-  declarations: [],
+  declarations: [UserhomeComponent, UsersettingComponent],
   exports: []
 })
 export class HomePageModule {

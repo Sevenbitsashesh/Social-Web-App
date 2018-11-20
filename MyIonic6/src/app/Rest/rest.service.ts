@@ -24,7 +24,7 @@ export class RestService {
     console.log(model);
     // this.users.add(model));
     if (true ) {
-      this.router.navigate(['/appTabs']);
+      this.router.navigate(['/usertabs']);
     }
 
   }

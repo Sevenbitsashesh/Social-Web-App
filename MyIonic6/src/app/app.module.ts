@@ -17,20 +17,16 @@ import { AngularFireModule } from 'angularfire2/';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CreateComponent } from '../app/home/create/create.component';
-import { UpdateComponent } from '../app/home/update/update.component';
-import { DeleteComponent } from '../app/home/delete/delete.component';
-import { ListComponent } from './home/list/list.component';
 import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { GlobalErrorService } from './Rest/global_error';
 @NgModule({
-  declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, HomePage, CreateComponent,
-    ListComponent, UpdateComponent, DeleteComponent],
+  declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, HomePage, CreateComponent],
   entryComponents: [],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, FormsModule,
     AngularFireModule.initializeApp(Firebase_Config),
     ReactiveFormsModule,
     AngularFireDatabaseModule, AngularFirestoreModule],
-  exports: [ FormsModule, CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
+  exports: [ FormsModule, CreateComponent],
   providers: [
     StatusBar,
     SplashScreen,
