@@ -22,16 +22,15 @@ import { DeleteComponent } from '../app/home/delete/delete.component';
 import { ListComponent } from './home/list/list.component';
 import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { GlobalErrorService } from './Rest/global_error';
-import { UserhomeComponent } from '../app/home/userhome/userhome.component';
 @NgModule({
   declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, HomePage, CreateComponent,
-    ListComponent, UpdateComponent, DeleteComponent, UserhomeComponent],
+    ListComponent, UpdateComponent, DeleteComponent],
   entryComponents: [],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, FormsModule,
     AngularFireModule.initializeApp(Firebase_Config),
     ReactiveFormsModule,
     AngularFireDatabaseModule, AngularFirestoreModule],
-  exports: [ FormsModule, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, UserhomeComponent ],
+  exports: [ FormsModule, CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
   providers: [
     StatusBar,
     SplashScreen,

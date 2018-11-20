@@ -22,8 +22,9 @@ export class RestService {
   // Adding user info
   addInfo(model) {
     console.log(model);
-    if (this.users.add(model)) {
-      this.router.navigate(['/userhome']);
+    // this.users.add(model));
+    if (true ) {
+      this.router.navigate(['/appTabs']);
     }
 
   }
