@@ -19,13 +19,14 @@ import { CreateComponent } from '../app/home/create/create.component';
 import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { GlobalErrorService } from './Rest/global_error';
 import { UsertabsPageModule } from './home/usertabs/usertabs.module';
+import { FirstPageModule } from './first/first.module';
 @NgModule({
   declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, CreateComponent],
   entryComponents: [],
   imports: [UsertabsPageModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, FormsModule,
     AngularFireModule.initializeApp(Firebase_Config),
     ReactiveFormsModule,
-    AngularFireDatabaseModule, AngularFirestoreModule],
+    AngularFireDatabaseModule, AngularFirestoreModule, FirstPageModule],
   exports: [ FormsModule],
   providers: [
     StatusBar,

@@ -6,6 +6,7 @@ import { UserDetails } from './models/user_model';
 import { LoginComponent } from './login/login.component';
 import { CreateComponent } from '../app/home/create/create.component';
 import { UserhomeComponent } from './home/userhome/userhome.component';
+import { FirstPage } from './first/first.page';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
 //  {path: 'home', component: HomePage },
   {path: 'create', component: CreateComponent},
   { path: 'usertabs', loadChildren: './home/usertabs/usertabs.module#UsertabsPageModule'},
-  // {path: '', component: LoginComponent},
+  { path: 'first', loadChildren: './first/first.module#FirstPageModule' },
+   { path: '', component: FirstPage},
 ];
 
 @NgModule({
