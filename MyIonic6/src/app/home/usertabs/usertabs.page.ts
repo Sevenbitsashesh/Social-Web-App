@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../../Rest/rest.service';
 
 @Component({
   selector: 'app-usertabs',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsertabsPage implements OnInit {
 
-  constructor() { }
+  constructor(rest: RestService) {
+    // rest.checkLogin();
+  }
 
   ngOnInit() {
   }

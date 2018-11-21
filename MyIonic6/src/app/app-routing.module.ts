@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomePage },
   {path: 'create', component: CreateComponent},
-  { path: 'usertabs', loadChildren: './home/usertabs/usertabs.module#UsertabsPageModule', component: UserhomeComponent },
+  { path: 'usertabs', loadChildren: './home/usertabs/usertabs.module#UsertabsPageModule'},
   {path: '', component: LoginComponent},
 ];
 

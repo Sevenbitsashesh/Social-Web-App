@@ -17,12 +17,19 @@ const routes: Routes = [
       outlet: 'setting_tab',
       component: UsersettingComponent
     }
-  ] },
+  ]
+},
+{
+  path: '',
+  redirectTo: '/tabs/(home_tab=home_tab)',
+  pathMatch: 'full'
+}
+
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: []
+  imports: [RouterModule.forChild(routes)],
+  exports: [ RouterModule ]
 })
 export class TabRoutingmodule { }

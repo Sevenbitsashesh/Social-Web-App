@@ -18,8 +18,8 @@ import { UsersettingComponent } from '../usersetting/usersetting.component';
     IonicModule,
     TabRoutingmodule
   ],
-  declarations: [UsertabsPage, UserhomeComponent, UsersettingComponent],
+  declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage],
   exports: [ UsertabsPage ],
-  bootstrap: [UsertabsPage]
+  bootstrap: []
 })
 export class UsertabsPageModule {}
