@@ -8,7 +8,6 @@ import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import {AngularFireDatabase} from 'angularfire2/database';
 import { UserDetails } from '../models/user_model';
 import { firestore } from 'firebase';
-import { HomePage } from '../home/home.page';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { RestService } from '../Rest/rest.service';
 import { Router } from '@angular/router';

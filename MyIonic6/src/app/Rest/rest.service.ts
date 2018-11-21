@@ -34,7 +34,7 @@ export class RestService {
   // Checking Login
   checkLogin() {
     if (localStorage.getItem('userid') !== null ) {
-        this.router.navigate(['/home']);
+        this.router.navigateByUrl('/tabs/(home_tab:home_tab)');
     } else {
       this.router.navigate(['/login']);
     }

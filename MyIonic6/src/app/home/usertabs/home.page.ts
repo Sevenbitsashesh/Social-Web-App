@@ -1,9 +1,7 @@
 import { Component, NgModule } from '@angular/core';
-import {RestService} from '../Rest/rest.service';
-import { LoginComponent } from '../login/login.component';
 import 'rxjs/Rx';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { RestService } from '../../Rest/rest.service';
 
 @Component({
   selector: 'app-root2',

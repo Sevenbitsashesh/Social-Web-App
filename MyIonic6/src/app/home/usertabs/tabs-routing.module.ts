@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsertabsPage } from './usertabs.page';
 import { UserhomeComponent } from '../userhome/userhome.component';
 import { UsersettingComponent } from '../usersetting/usersetting.component';
+import { HomePage } from './home.page';
 
 
 const routes: Routes = [
@@ -19,11 +20,12 @@ const routes: Routes = [
     }
   ]
 },
-{
-  path: '',
-  redirectTo: '/tabs/(home_tab=home_tab)',
-  pathMatch: 'full'
-}
+// {
+//   path: '',
+//   redirectTo: '/tabs/(home_tab:home_tab)',
+//   pathMatch: 'full'
+// },
+{path: 'home', component: HomePage },
 
 
 ];
