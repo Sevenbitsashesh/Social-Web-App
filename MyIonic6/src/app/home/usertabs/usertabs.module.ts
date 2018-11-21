@@ -9,6 +9,7 @@ import { UsertabsPage } from './usertabs.page';
 import { TabRoutingmodule } from './tabs-routing.module';
 import { UserhomeComponent } from '../userhome/userhome.component';
 import { UsersettingComponent } from '../usersetting/usersetting.component';
+import { HomePage } from './home.page';
 
 
 @NgModule({
@@ -18,8 +19,8 @@ import { UsersettingComponent } from '../usersetting/usersetting.component';
     IonicModule,
     TabRoutingmodule
   ],
-  declarations: [UsertabsPage, UserhomeComponent, UsersettingComponent],
+  declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage],
   exports: [ UsertabsPage ],
-  bootstrap: [UsertabsPage]
+  bootstrap: []
 })
 export class UsertabsPageModule {}
