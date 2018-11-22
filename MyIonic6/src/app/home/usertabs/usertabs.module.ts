@@ -10,6 +10,7 @@ import { TabRoutingmodule } from './tabs-routing.module';
 import { UserhomeComponent } from '../userhome/userhome.component';
 import { UsersettingComponent } from '../usersetting/usersetting.component';
 import { HomePage } from './home.page';
+import { UseractivityService } from '../useractivity/useractivity.service';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { HomePage } from './home.page';
   ],
   declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage],
   exports: [ UsertabsPage ],
-  bootstrap: []
+  bootstrap: [],
+  providers: [ UseractivityService ]
 })
 export class UsertabsPageModule {}

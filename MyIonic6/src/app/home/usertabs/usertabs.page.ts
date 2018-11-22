@@ -11,7 +11,7 @@ export class UsertabsPage implements OnInit {
   users: any;
   loggedUsers: string = localStorage.getItem('userid');
   constructor(public restProvider: RestService, public route: Router) {
-    // this.restProvider.checkLogin();
+     this.restProvider.checkLogin();
   }
   logout() {
     localStorage.clear();
