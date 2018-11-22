@@ -1,16 +1,22 @@
 <ion-content padding>
    <ion-item padding>
-     <ion-textarea name="txtTweet">
+     <ion-textarea name="txtTweet" placeholder="Whats on your mind" [(ngModel)]="model.tweetcontent">
 
      </ion-textarea>
-     <ion-img>
-
-     </ion-img>
-     <ion-button>
+     <!-- <ion-button>
         Choose
-       </ion-button>
-     <ion-button>
+       </ion-button> -->
+     <ion-button (click)="createTweet(model)">
       Tweet
      </ion-button>
    </ion-item>
+   <ion-list>
+     <ion-badge>
+         <ion-item>
+          Hello
+         </ion-item>
+     </ion-badge>
+
+     
+   </ion-list>
 </ion-content>

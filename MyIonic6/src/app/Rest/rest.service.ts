@@ -35,6 +35,7 @@ export class RestService {
     if (localStorage.getItem('userid') !== null ) {
       // setting login user
       this.loggedUser = this.getLogged();
+        this.loggedUser = this.loggedUser.toLowerCase();
         this.router.navigateByUrl('/tabs/(home_tab:home_tab)');
     } else {
       this.router.navigate(['/login']);

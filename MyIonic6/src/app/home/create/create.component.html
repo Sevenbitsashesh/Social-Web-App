@@ -69,5 +69,5 @@
                               <div class="error-message" *ngIf="myForm.get('address').hasError(validation.type) && myForm.controls['hobbies'].touched">{{validation.message}}</div>
                             </ng-container>
                           </ion-item>
-                                    <ion-button (click)="saveProfile()">Create</ion-button>
+                                    <ion-button (click)="saveProfile()" [disabled]="myForm.invalid">Create</ion-button>
                                   </form>
