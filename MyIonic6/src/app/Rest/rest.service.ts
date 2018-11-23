@@ -28,14 +28,15 @@ export class RestService {
 
   }
   getLogged() {
+    console.log('getlogged', localStorage.getItem('userid'));
     return localStorage.getItem('userid');
   }
   // Checking Login
   checkLogin() {
     if (localStorage.getItem('userid') !== null ) {
       // setting login user
-      this.loggedUser = this.getLogged();
-        this.loggedUser = this.loggedUser.toLowerCase();
+       this.loggedUser = this.getLogged();
+        // this.loggedUser = this.loggedUser.toLowerCase();
         this.router.navigateByUrl('/tabs/(home_tab:home_tab)');
     } else {
       this.router.navigate(['/login']);

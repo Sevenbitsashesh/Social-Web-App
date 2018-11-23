@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
 })
 export class UsertabsPage implements OnInit {
   users: any;
-  loggedUsers: string = localStorage.getItem('userid');
+  loggedUsers;
   constructor(public restProvider: RestService, public route: Router) {
+     this.loggedUsers = localStorage.getItem('userid');
      this.restProvider.checkLogin();
   }
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('userid');
     this.restProvider.checkLogin();
   }
   ngOnInit() {
