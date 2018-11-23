@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../Rest/rest.service';
 import 'rxjs/Rx';
 import { Router } from '@angular/router';
+import { UseractivityService } from '../useractivity/useractivity.service';
 @Component({
   selector: 'app-usertabs',
   templateUrl: './usertabs.page.html',
@@ -9,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class UsertabsPage implements OnInit {
   users: any;
-  loggedUsers;
+  loggedUsers: any;
   constructor(public restProvider: RestService, public route: Router) {
-     this.loggedUsers = localStorage.getItem('userid');
      this.restProvider.checkLogin();
+     this.loggedUsers = localStorage.getItem('userid');
   }
   logout() {
     localStorage.removeItem('userid');

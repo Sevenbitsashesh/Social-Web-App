@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { configusers } from '../models/users_firestore';
 import { UserDetails } from '../models/user_model';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class RestService {
 
   }
   getLogged() {
-    console.log('getlogged', localStorage.getItem('userid'));
+//    console.log('getlogged', localStorage.getItem('userid'));
     return localStorage.getItem('userid');
   }
   // Checking Login
@@ -41,6 +42,10 @@ export class RestService {
     } else {
       this.router.navigate(['/login']);
     }
+  }
+  getTodayDate() {
+      const today = formatDate(new Date(), 'dd-MM-yyyy hh:mm:ss', 'en-US');
+      return today;
   }
 }
 
