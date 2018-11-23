@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       userid: userid,
       password: password
     };
-   // this.rest.addInfo(user);
+    this.rest.addInfo(user);
   }
 
 

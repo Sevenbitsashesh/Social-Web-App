@@ -32,7 +32,7 @@ export class UseractivityService {
 getUsername() {
   // Get Logged in user email
  // console.log('hi', this.loggedUser);
-  this.db.collection('users').ref.where('userid', '==', this.loggedUser).onSnapshot(snap => {
+  this.db.collection('users').ref.where('email', '==', this.loggedUser).onSnapshot(snap => {
     snap.forEach(change => {
       this.model = change.data();
       localStorage.setItem('userid', this.model.userid);
@@ -65,7 +65,8 @@ getUsername() {
       t_title: t_title,
       t_date: this.rest.getTodayDate()
     };
-    const tweetColl = this.db.collection('users').ref.where('userid', '==', this.loggedUser);
+    const tweetColl = this.db.collection('users').ref.where('email', '==', this.loggedUser);
+    console.log(this.loggedUser);
     tweetColl.onSnapshot(snap => {
     snap.forEach(data => {
       this.tweet.add(this.tweetmodel);
