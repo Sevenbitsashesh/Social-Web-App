@@ -24,21 +24,6 @@
             <ion-label>Email :</ion-label>
               <ion-input type="Email" formControlName="email" name="email"></ion-input>
             </ion-item>
-            <ion-item>
-                <ion-label class="required">*</ion-label>
-                <ion-label>Password :</ion-label>
-                  <ion-input type="Password"formControlName="password"></ion-input>
-                  <ng-container *ngFor="let validation of validation_messages.password">
-                    <div class="error-message" *ngIf="myForm.get('password').hasError(validation.type) && myForm.controls['password'].touched">{{validation.message}}</div>   
-                  </ng-container>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Confirm Password :</ion-label>
-                      <ion-input type="Password" formControlName="cpassword"></ion-input>
-                      <ng-container *ngFor="let validation of validation_messages.cpassword">
-                        <div class="error-message" *ngIf="myForm.get('cpassword').hasError(validation.type) && myForm.controls['cpassword'].touched">{{validation.message}}</div>
-                      </ng-container>
-                </ion-item>
                 <ion-item>
                   * <ion-label> Gender: </ion-label>
                      <ion-radio-group formControlName="gender">

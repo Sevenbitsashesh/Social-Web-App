@@ -48,6 +48,8 @@ getUsername() {
       console.log(change.id);
     });
     console.log(this.model.email);
+    // Setting Username
+    localStorage.setItem('username', this.model.username);
   });
   // getting users document id
   this.db.collection('users').ref.get().then((snapshot) => {

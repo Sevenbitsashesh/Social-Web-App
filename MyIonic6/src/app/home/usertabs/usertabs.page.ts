@@ -10,13 +10,14 @@ import { UseractivityService } from '../useractivity/useractivity.service';
 })
 export class UsertabsPage implements OnInit {
   users: any;
-  loggedUser: any;
+  username: any;
   constructor(public restProvider: RestService, public route: Router) {
      this.restProvider.checkLogin();
-     this.loggedUser = localStorage.getItem('username');
+     this.username = localStorage.getItem('username');
   }
   logout() {
     localStorage.removeItem('email');
+     localStorage.removeItem('username');
     this.restProvider.checkLogin();
   }
   ngOnInit() {

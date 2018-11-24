@@ -1,59 +1,73 @@
 <form [formGroup]="myForm">
-    <ion-item>
-        <ion-label danger>*</ion-label>
-    <ion-label>username :</ion-label>
-      <ion-input type="text" formControlName="username"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Mobile :</ion-label>
-          <ion-input type="mobile"></ion-input>
+  <ion-item>
+      <ion-label class="required">*</ion-label>
+  <ion-label>username :</ion-label>
+    <ion-input type="text" formControlName="username"></ion-input> 
+    <ng-container *ngFor="let validation of validation_messages.username">
+    <div class="error-message" *ngIf="myForm.get('username').hasError(validation.type) && myForm.controls['username'].touched">{{validation.message}}</div>   
+  </ng-container>
+  </ion-item>
+  <ion-item>
+      <ion-label class="required">*</ion-label>
+      <ion-label>Mobile :</ion-label>
+        <ion-input type="mobile" formControlName="mobile"></ion-input>
+        <ng-container *ngFor="let validation of validation_messages.mobile">
+            <div class="error-message" *ngIf="myForm.get('mobile').hasError(validation.type) && myForm.controls['mobile'].touched">{{validation.message}}</div>   
+          </ng-container>
+      </ion-item>
+      <ion-item>
+        <ion-label>DOB :</ion-label>
+          <ion-input type="Date" formControlName="dob" name="dob"></ion-input>
         </ion-item>
-        <ion-item>
-           * <ion-label> Gender: </ion-label>
-              <ion-radio-group>
-            <ion-item>
-              <ion-label>Male</ion-label>
-              <ion-radio value="Male" checked></ion-radio>              
-            </ion-item>
-            <ion-item>
-                <ion-label>Female</ion-label>
-                <ion-radio value="FeMale"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        
-            </ion-item>
-          
-            
-            <ion-item>
-                <ion-label>Email :</ion-label>
-                  <ion-input type="Email" [(ngModel)]="email" name="email"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>DOB :</ion-label>
-                      <ion-input type="date"></ion-input>
-                    </ion-item>
-                <ion-item>
-                    <ion-label>Password :</ion-label>
-                      <ion-input type="Password" [(ngModel)]="password" name="password"></ion-input>
-                    </ion-item>
+      <ion-item>
+          <ion-label class="required">*</ion-label>
+          <ion-label>Email :</ion-label>
+            <ion-input type="Email" formControlName="email" name="email"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label class="required">*</ion-label>
+              <ion-label>Password :</ion-label>
+                <ion-input type="Password" formControlName="password"></ion-input>
+                <ng-container *ngFor="let validation of validation_messages.password">
+                  <div class="error-message" *ngIf="myForm.get('password').hasError(validation.type) && myForm.controls['password'].touched">{{validation.message}}</div>   
+                </ng-container>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Confirm Password :</ion-label>
+                    <ion-input type="Password" formControlName="cpassword"></ion-input>
+                    <ng-container *ngFor="let validation of validation_messages.cpassword">
+                      <div class="error-message" *ngIf="myForm.get('cpassword').hasError(validation.type) && myForm.controls['cpassword'].touched">{{validation.message}}</div>
+                    </ng-container>
+              </ion-item>
+              <ion-item>
+                * <ion-label> Gender: </ion-label>
+                   <ion-radio-group formControlName="gender">
+                 <ion-item>
+                   <ion-label>Male</ion-label>
+                   <ion-radio value="Male" checked></ion-radio>              
+                 </ion-item>
+                 <ion-item>
+                     <ion-label>Female</ion-label>
+                     <ion-radio value="Female"></ion-radio>
+                 </ion-item>
+               </ion-radio-group>
+             
+                 </ion-item>
+               
                     <ion-item>
-                        <ion-label>Confirm Password :</ion-label>
-                          <ion-input type="Password"></ion-input>
+
+                      <ion-label>Home Address :</ion-label>
+                        <ion-textarea formControlName="address"></ion-textarea>
+                        <ng-container *ngFor="let validation of validation_messages.address">
+                          <div class="error-message" *ngIf="myForm.get('address').hasError(validation.type) && myForm.controls['address'].touched">{{validation.message}}</div>
+                        </ng-container>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Hobbies :</ion-label>
+                          <ion-textarea formControlName="hobbies"></ion-textarea>
+                          <ng-container *ngFor="let validation of validation_messages.hobbies">
+                            <div class="error-message" *ngIf="myForm.get('address').hasError(validation.type) && myForm.controls['hobbies'].touched">{{validation.message}}</div>
+                          </ng-container>
                         </ion-item>
-                        <ion-item>
-                            <ion-label>Home Address :</ion-label>
-                              <ion-input type="text"></ion-input>
-                            </ion-item>
-                            <ion-item>
-                              
-                                <ion-label>Profile Pic :</ion-label>
-                                  <ion-button>
-                                      Select Image
-                                  </ion-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-label>Hobbies :</ion-label>
-                                      <ion-input type="text"></ion-input>
-                                    </ion-item>
-                                    <ion-button padding>Create</ion-button>
-                                  </form>
+                                  <ion-button (click)="saveProfile()" [disabled]="myForm.invalid">Create</ion-button>
+                                </form>
