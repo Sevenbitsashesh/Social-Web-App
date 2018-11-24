@@ -29,12 +29,13 @@ export class RestService {
 
   }
   getLogged() {
-    console.log('getlogged', localStorage.getItem('userid'));
-    return localStorage.getItem('userid');
+    console.log('getlogged', localStorage.getItem('email'));
+    return localStorage.getItem('email');
   }
+
   // Checking Login
   checkLogin() {
-    if (localStorage.getItem('userid') !== null ) {
+    if (localStorage.getItem('email') !== null ) {
       // setting login user
        this.loggedUser = this.getLogged();
         // this.loggedUser = this.loggedUser.toLowerCase();

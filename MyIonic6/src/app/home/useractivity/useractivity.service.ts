@@ -20,8 +20,8 @@ export class UseractivityService {
   tweet: AngularFirestoreCollection<TweetModel>;
   tweets: Observable<TweetModel[]>;
   userDoc: string;
-
   tweetDoc: string;
+
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;
@@ -35,7 +35,7 @@ getUsername() {
   this.db.collection('users').ref.where('email', '==', this.loggedUser).onSnapshot(snap => {
     snap.forEach(change => {
       this.model = change.data();
-      localStorage.setItem('userid', this.model.userid);
+      localStorage.setItem('username', this.model.userid);
       // Getting Logged users Tweet
       this.tweet = this.db.collection('users').doc(change.id).collection<TweetModel>(configtweets.collection_endpoint);
       this.tweet.ref.get().then( function(querySnapshot) {

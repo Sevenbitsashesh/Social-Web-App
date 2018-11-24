@@ -27,7 +27,7 @@ import { ErrorHandler } from '@angular/router/src/router';
 export class LoginComponent implements OnInit {
   credentialsForm: FormGroup;
   ref = firebase.database().ref('users/').push();
-  userid;
+  email;
   pass;
   message: string;
   constructor(private router: Router, public rest: RestService, public fireauth: AngularFireAuth, public afs: AngularFirestore) {
@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  getLogin(userid: string, pass: string) {
+  getLogin(email: string, pass: string) {
 
-    this.fireauth.auth.signInWithEmailAndPassword(userid, pass).then(user => {
-      localStorage.setItem('userid', userid);
+    this.fireauth.auth.signInWithEmailAndPassword(email, pass).then(user => {
+      localStorage.setItem('email', email);
       this.loggedin = true;
       this.router.navigate(['/home']);
      },
@@ -49,19 +49,19 @@ export class LoginComponent implements OnInit {
      );
   }
   // Create user in firebase Authentication
-  createAcc(userid: string, pass: string) {
-    this.fireauth.auth.createUserWithEmailAndPassword(userid, pass).then(user => {
-      this.createUser(userid, pass);
-      this.getLogin(userid, pass);
+  createAcc(email: string, pass: string) {
+    this.fireauth.auth.createUserWithEmailAndPassword(email, pass).then(user => {
+      this.createUser(email, pass);
+      this.getLogin(email, pass);
     },
     err => { this.message = err; throw err;  }
     );
   }
 
   // create user in Firestore
-  createUser(userid: string, password: string) {
+  createUser(email: string, password: string) {
     const user = {
-      userid: userid,
+      email: email,
       password: password
     };
     this.rest.addInfo(user);
