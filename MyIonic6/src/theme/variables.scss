@@ -76,4 +76,13 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  //New Ion Input Style
+  .newionInput {
+   color:blue; 
+   -moz-border-radius: 50px;
+   -webkit-border-radius: 50px;
+   border-radius: 10px;
+   text-align: center;
+   width: 300px;
+  }
 }

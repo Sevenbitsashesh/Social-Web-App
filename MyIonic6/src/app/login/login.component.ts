@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { deepEqual } from 'assert';
 import { shallowEqual } from '@angular/router/src/utils/collection';
 import { FirebaseAuth } from 'angularfire2';
-import { userInfo } from 'os';
+import { userInfo, type } from 'os';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import {AngularFireDatabase} from 'angularfire2/database';
 import { UserDetails } from '../models/user_model';
@@ -12,7 +12,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { RestService } from '../Rest/rest.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FormBuilder, Validators, ReactiveFormsModule, FormGroup, NgModel  } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormGroup, NgModel, FormControl  } from '@angular/forms';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 import { ErrorHandler } from '@angular/router/src/router';
@@ -23,39 +23,73 @@ import { ErrorHandler } from '@angular/router/src/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 @Injectable()
 export class LoginComponent implements OnInit {
   credentialsForm: FormGroup;
   ref = firebase.database().ref('users/').push();
-  email;
-  pass;
-  message: string;
-  constructor(private router: Router, public rest: RestService, public fireauth: AngularFireAuth, public afs: AngularFirestore) {
-    this.rest.checkLogin();
+  email: string;
+  pass: string;
+  message;
+  loginForm: FormGroup;
+  model: any;
+  validation_messages = {
+    'password': [
+      { type: 'required', message: 'Password is required'},
+      { type: 'pattern', message: 'Minimum 8 and should include at least special charater'}
+    ],
+      'email': [
+        {type: 'required', message: 'Email is required'},
+        { type: 'pattern', message: 'Not valid email' }
+      ]
+    };
+  constructor(private router: Router, public rest: RestService, public fireauth: AngularFireAuth, public afs: AngularFirestore,
+    private formBuilder: FormBuilder) {
+     this.rest.checkLogin();
+
+    this.loginForm = formBuilder.group({
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+      ])),
+      pass: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}')
+      ])),
+    });
   }
   loggedin = false;
-  model: any = {};
+
   ngOnInit() {
   }
+  getLogin() {
+     const model = {
+      'email': this.loginForm.get('email').value,
+      'pass': this.loginForm.get('pass').value
+    };
 
-  getLogin(email: string, pass: string) {
-
-    this.fireauth.auth.signInWithEmailAndPassword(email, pass).then(user => {
-      localStorage.setItem('email', email);
-      this.loggedin = true;
+    this.fireauth.auth.signInWithEmailAndPassword(model.email , model.pass).then(user => {
+      localStorage.setItem('email', model.email);
+      // this.loggedin = true;
       this.router.navigate(['/home']);
      },
-     err => { this.message = err; throw err;  }
+     err => {  this.message = err;
+      this.message = true; throw err; }
      );
   }
   // Create user in firebase Authentication
-  createAcc(email: string, pass: string) {
-    this.fireauth.auth.createUserWithEmailAndPassword(email, pass).then(user => {
-      this.createUser(email, pass);
-      this.getLogin(email, pass);
+  createAcc() {
+    const model = {
+      'email': this.loginForm.get('email').value,
+      'pass': this.loginForm.get('pass').value
+    };
+    this.fireauth.auth.createUserWithEmailAndPassword(model.email , model.pass).then(user => {
+      this.createUser(model.email , model.pass);
+      this.getLogin();
     },
-    err => { this.message = err; throw err;  }
+    err => { this.message = err;  throw err;  }
     );
+
   }
 
   // create user in Firestore

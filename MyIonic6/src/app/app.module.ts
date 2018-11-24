@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, NgModel } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -27,7 +27,7 @@ import { FirstPageModule } from './first/first.module';
     AngularFireModule.initializeApp(Firebase_Config),
     ReactiveFormsModule,
     AngularFireDatabaseModule, AngularFirestoreModule, FirstPageModule],
-  exports: [ FormsModule],
+  exports: [ ],
   providers: [
     StatusBar,
     SplashScreen,

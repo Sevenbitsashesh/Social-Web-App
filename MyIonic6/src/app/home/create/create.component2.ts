@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../Rest/rest.service';
 import { PasswordValidator } from '../../Rest/validation';
@@ -11,8 +10,10 @@ import { userInfo } from 'os';
 })
 export class CreateComponent implements OnInit {
   username: string;
+  password: string;
   email: string;
   mobile: string;
+  cpassword: string;
   address: string;
   dob: string;
   gender: string;
@@ -37,6 +38,13 @@ export class CreateComponent implements OnInit {
         {type: 'required', message: 'Email is required'},
         { type: 'pattern', message: 'Not valid email' }
       ],
+      'password': [
+        { type: 'required', message: 'Password is required'},
+        { type: 'pattern', message: 'Minimum 8 and should include at least special charater'}
+      ],
+      'cpassword': [
+        { type: 'areEqual', message: 'Confirm Password is not matched' }
+      ],
       'address': [
         { type: 'pattern', message: 'Maximum 50 Character' }
       ]
@@ -45,6 +53,7 @@ export class CreateComponent implements OnInit {
       const model = {
         'userid': this.myForm.get('username').value,
         'email': this.myForm.get('email').value,
+        'password': this.myForm.get('password').value,
         'address': this.myForm.get('address').value,
         'mobile': this.myForm.get('mobile').value,
          'gender': this.myForm.get('gender').value,
@@ -75,6 +84,13 @@ export class CreateComponent implements OnInit {
       email: new FormControl({value: this.loggedEmail, disabled : true}, Validators.compose([
         Validators.required,
         // Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}')
+      ])),
+      cpassword: new FormControl('', Validators.compose([
+        Validators.required
       ])),
       address: new FormControl('', Validators.compose([
         Validators.pattern('^[a-z]{1,100}$')
