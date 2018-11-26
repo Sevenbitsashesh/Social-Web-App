@@ -16,7 +16,7 @@ export class UsertabsPage implements OnInit {
      this.username = localStorage.getItem('username');
   }
   logout() {
-    localStorage.removeItem('email');
+    localStorage.removeItem('usermail');
      localStorage.removeItem('username');
     this.restProvider.checkLogin();
   }

@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.fireauth.auth.signInWithEmailAndPassword(model.email , model.pass).then(user => {
-      localStorage.setItem('username', model.email);
+      localStorage.setItem('usermail', model.email);
       console.log('Logged in');
       // this.loggedin = true;
       this.router.navigate(['/home']);

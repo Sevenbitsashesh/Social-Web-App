@@ -35,13 +35,13 @@ export class RestService {
      }).catch(error => console.log(error));
   }
     getLogged() {
-    console.log('getlogged', localStorage.getItem('username'));
-    return localStorage.getItem('username');
+    console.log('getlogged', localStorage.getItem('usermail'));
+    return localStorage.getItem('usermail');
   }
 
   // Checking Login
   checkLogin() {
-    if (localStorage.getItem('username') !== null ) {
+    if (localStorage.getItem('usermail') !== null ) {
       // setting login user
        this.loggedUser = this.getLogged();
         // this.loggedUser = this.loggedUser.toLowerCase();
