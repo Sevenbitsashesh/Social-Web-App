@@ -76,7 +76,7 @@ getUsername() {
       t_title: t_title,
       t_date: this.rest.getTodayDate()
     };
-    const tweetColl = this.db.collection('users').ref.where('userid', '==', this.loggedUser);
+    const tweetColl = this.db.collection('users').ref.where('email', '==', this.loggedUser);
     console.log(this.loggedUser);
     tweetColl.onSnapshot(snap => {
     snap.forEach(data => {
@@ -86,22 +86,4 @@ getUsername() {
     });
     console.log(this.tweetDoc);
   }
-  // getUsername() {
-  //   // Get Logged in user email
-  //  // console.log('hi', this.loggedUser);
-  //   this.db.collection('users').ref.where('email', '==', this.loggedUser).onSnapshot(snap => {
-  //     snap.forEach(change => {
-  //       this.model = change.data();
-  //       localStorage.setItem('userid', this.model.userid);
-  //     });
-  //     console.log(this.model.email);
-  //   });
-  //   // getting users document id
-  //   this.db.collection('users').ref.get().then((snapshot) => {
-  //     snapshot.docs.forEach(doc => {
-  //       // console.log(doc.data());
-  //      });
-  //     });
-  //   }
-
 }
