@@ -36,11 +36,12 @@ addInfo(model) {
   // this.db.collection<UserDetails>
 }
 getUsername() {
+  console.log('uid', this.loggedUser);
   // Get Logged in user email
- // console.log('hi', this.loggedUser);
   this.db.collection('users').ref.where('email', '==', this.loggedUser).onSnapshot(snap => {
     snap.forEach(change => {
       this.model = change.data();
+      console.log(this.model);
       localStorage.setItem('username', this.model.userid);
       // Getting Logged users Tweet
       this.tweet = this.db.collection('users').doc(change.id).collection<TweetModel>(configtweets.collection_endpoint);
@@ -56,7 +57,7 @@ getUsername() {
     });
     console.log(this.model.email);
     // Setting Username
-    localStorage.setItem('username', this.model.username);
+    // localStorage.setItem('username', this.model.username);
     console.log('new id', this.uid);
   });
   // getting users document id
@@ -75,7 +76,7 @@ getUsername() {
       t_title: t_title,
       t_date: this.rest.getTodayDate()
     };
-    const tweetColl = this.db.collection('users').ref.where('email', '==', this.loggedUser);
+    const tweetColl = this.db.collection('users').ref.where('userid', '==', this.loggedUser);
     console.log(this.loggedUser);
     tweetColl.onSnapshot(snap => {
     snap.forEach(data => {

@@ -67,11 +67,12 @@ export class LoginComponent implements OnInit {
   getLogin() {
      const model = {
       'email': this.loginForm.get('email').value,
-      'pass': this.loginForm.get('pass').value
+      'pass': this.loginForm.get('pass').value,
     };
 
     this.fireauth.auth.signInWithEmailAndPassword(model.email , model.pass).then(user => {
-      localStorage.setItem('email', model.email);
+      localStorage.setItem('username', model.email);
+      console.log('Logged in');
       // this.loggedin = true;
       this.router.navigate(['/home']);
      },
@@ -83,10 +84,12 @@ export class LoginComponent implements OnInit {
   createAcc() {
     const model = {
       'email': this.loginForm.get('email').value,
-      'pass': this.loginForm.get('pass').value
+      'pass': this.loginForm.get('pass').value,
+      'userid': this.loginForm.get('email').value
     };
     this.fireauth.auth.createUserWithEmailAndPassword(model.email , model.pass).then(user => {
-      this.createUser(model.email , model.pass);
+      // this.createUser(model.email , model.pass);
+      this.createUser(model);
       // this.createUid();
       this.getLogin();
     },
@@ -96,10 +99,10 @@ export class LoginComponent implements OnInit {
   }
 
   // create user in Firestore
-  createUser(email: string, password: string) {
+  createUser(model) {
     const user = {
-      email: email,
-      password: password
+      email: model.email,
+      userid: model.userid
     };
     this.rest.addInfo(user);
   }

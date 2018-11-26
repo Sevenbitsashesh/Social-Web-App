@@ -21,7 +21,8 @@ export class RestService {
 
   // Adding user info
   addInfo(model) {
-    // this.userscollection.add(model);
+    console.log(model);
+     this.userscollection.add(model);
     if (true ) {
       this.router.navigate(['/tabs']);
     }
@@ -33,14 +34,14 @@ export class RestService {
       this.router.navigate(['/tabs']);
      }).catch(error => console.log(error));
   }
-  getLogged() {
-    console.log('getlogged', localStorage.getItem('email'));
-    return localStorage.getItem('email');
+    getLogged() {
+    console.log('getlogged', localStorage.getItem('username'));
+    return localStorage.getItem('username');
   }
 
   // Checking Login
   checkLogin() {
-    if (localStorage.getItem('email') !== null ) {
+    if (localStorage.getItem('username') !== null ) {
       // setting login user
        this.loggedUser = this.getLogged();
         // this.loggedUser = this.loggedUser.toLowerCase();
