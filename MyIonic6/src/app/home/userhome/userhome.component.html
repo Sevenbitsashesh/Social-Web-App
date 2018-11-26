@@ -10,11 +10,15 @@
        </ion-button>
       
    </ion-item>
-   <ion-list>
+   
      
-
+    
+        <ul>
+            <li *ngFor="let tweet of tweets">{{tweet.t_title}}</li>
+          </ul>
+    
      
 
        
-   </ion-list>
+   
 </ion-content>

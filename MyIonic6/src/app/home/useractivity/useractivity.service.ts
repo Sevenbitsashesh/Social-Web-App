@@ -19,6 +19,7 @@ export class UseractivityService {
   usersDoc: AngularFirestoreDocument<UserDetails>;
   tweet: AngularFirestoreCollection<TweetModel>;
   tweets: Observable<TweetModel[]>;
+  usersTweets;
   userDoc: string;
   tweetDoc: string;
   uid;
@@ -48,7 +49,9 @@ getUsername() {
       this.tweet.ref.get().then( function(querySnapshot) {
          if (querySnapshot.size > 0) {
              querySnapshot.forEach(function(doc) {
-               console.log(doc.id);
+              // Tweets document ids
+               // console.log(doc.data());
+               this.usersTweets =  doc.data();
              });
          }
       });
@@ -58,15 +61,50 @@ getUsername() {
     console.log(this.model.email);
     // Setting Username
     // localStorage.setItem('username', this.model.username);
-    console.log('new id', this.uid);
   });
   // getting users document id
   this.db.collection('users').ref.get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
-      // console.log(doc.data());
+       // console.log(doc.id);
      });
     });
   }
+
+// Getusernames tweets
+// getUsername() {
+//   console.log('uid', this.loggedUser);
+//   // Get Logged in user email
+//   this.db.collection('users').ref.where('email', '==', this.loggedUser).onSnapshot(snap => {
+//     snap.forEach(change => {
+//       this.model = change.data();
+//       console.log(this.model);
+//       localStorage.setItem('username', this.model.userid);
+//       // Getting Logged users Tweet
+//       this.tweet = this.db.collection('users').doc(change.id).collection<TweetModel>(configtweets.collection_endpoint);
+//       this.tweet.ref.get().then( function(querySnapshot) {
+//          if (querySnapshot.size > 0) {
+//              querySnapshot.forEach(function(doc) {
+//               // Tweets document ids
+//               // console.log(doc.id);
+//              });
+//          }
+//       });
+//       // Getting Logged user id
+//       this.uid = change.id;
+//     });
+//     console.log(this.model.email);
+//     // Setting Username
+//     // localStorage.setItem('username', this.model.username);
+//     console.log('new id', this.uid);
+//   });
+//   // getting users document id
+//   this.db.collection('users').ref.get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//       // console.log(doc.data());
+//      });
+//     });
+//   }
+
 
   // Tweeet create
   createTweet(tweetcontent, t_title) {
