@@ -59,7 +59,7 @@ export class CreateComponent implements OnInit {
          'gender': this.myForm.get('gender').value,
         'dob': this.myForm.get('dob').value
       };
-        this.rest.addInfo(model);
+       //  this.rest.addInfo(model);
     }
   ngOnInit() {
   }

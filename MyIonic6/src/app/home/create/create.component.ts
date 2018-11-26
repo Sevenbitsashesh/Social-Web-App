@@ -4,6 +4,7 @@ import { RestService } from '../../Rest/rest.service';
 import { PasswordValidator } from '../../Rest/validation';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { userInfo } from 'os';
+import { UseractivityService } from '../useractivity/useractivity.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -50,12 +51,13 @@ export class CreateComponent implements OnInit {
          'gender': this.myForm.get('gender').value,
         'dob': this.myForm.get('dob').value
       };
-        this.rest.addInfo(model);
+      // this.rest.addInfo(model);
+      this.useractivity.addInfo(model);
     }
   ngOnInit() {
   }
 
-  constructor(public rest: RestService, formBuilder: FormBuilder) {
+  constructor(public rest: RestService, public useractivity: UseractivityService , formBuilder: FormBuilder) {
     this.loggedEmail = rest.getLogged();
     this.myForm = formBuilder.group({
       username: new FormControl('', Validators.compose([

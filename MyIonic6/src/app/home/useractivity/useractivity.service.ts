@@ -21,7 +21,7 @@ export class UseractivityService {
   tweets: Observable<TweetModel[]>;
   userDoc: string;
   tweetDoc: string;
-
+  uid;
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;
@@ -29,6 +29,12 @@ export class UseractivityService {
       this.getUsername();
 
   }
+// Adding user info
+addInfo(model) {
+  this.rest.saveProfile(model, this.uid);
+  // this.userscollection.add(model);
+  // this.db.collection<UserDetails>
+}
 getUsername() {
   // Get Logged in user email
  // console.log('hi', this.loggedUser);
@@ -44,12 +50,14 @@ getUsername() {
                console.log(doc.id);
              });
          }
-      }); // Getting Logged users Tweet
-      console.log(change.id);
+      });
+      // Getting Logged user id
+      this.uid = change.id;
     });
     console.log(this.model.email);
     // Setting Username
     localStorage.setItem('username', this.model.username);
+    console.log('new id', this.uid);
   });
   // getting users document id
   this.db.collection('users').ref.get().then((snapshot) => {

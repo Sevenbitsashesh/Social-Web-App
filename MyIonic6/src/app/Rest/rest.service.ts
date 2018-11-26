@@ -21,12 +21,17 @@ export class RestService {
 
   // Adding user info
   addInfo(model) {
-    console.log(model);
-     this.userscollection.add(model);
+    // this.userscollection.add(model);
     if (true ) {
       this.router.navigate(['/tabs']);
     }
-
+  }
+  // Profile data update of user by uid
+  saveProfile(model, uid) {
+    console.log(model, uid);
+     this.db.doc<UserDetails>(`users/${uid}`).set(model).then(saved => {
+      this.router.navigate(['/tabs']);
+     }).catch(error => console.log(error));
   }
   getLogged() {
     console.log('getlogged', localStorage.getItem('email'));

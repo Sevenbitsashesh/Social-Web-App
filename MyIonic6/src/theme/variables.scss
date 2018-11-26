@@ -76,6 +76,7 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+ 
   //New Ion Input Style
   .newionInput {
    color:blue; 
@@ -85,4 +86,11 @@
    text-align: center;
    width: 300px;
   }
+  .error-message, .required {
+    color: red;
+}
+  ion-col {
+border: think solid black;
+  }
+
 }
