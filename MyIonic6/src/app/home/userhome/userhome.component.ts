@@ -9,18 +9,21 @@ import { TweetModel } from '../../models/tweet_model';
 })
 export class UserhomeComponent implements OnInit {
   tweetcontent;
-  tweets;
+  tweets: any;
   t_title;
+
   constructor(public uactivity: UseractivityService) {
+     this.tweets = this.uactivity.usersTweets;
     this.getTweet();
   }
+
   createTweet() {
       this.uactivity.createTweet(this.tweetcontent, this.t_title);
   }
   getTweet() {
-    this.tweets = this.uactivity.usersTweets;
-    //console.log('ok');
+     console.log('data :', this.tweets );
   }
   ngOnInit() {
+
   }
 }

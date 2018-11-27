@@ -6,17 +6,16 @@ import { configusers } from '../models/users_firestore';
 import { UserDetails } from '../models/user_model';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { formatDate } from '@angular/common';
-
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
   model: UserDetails;
   userscollection: AngularFirestoreCollection<UserDetails>;
-  usersDoc: AngularFirestoreDocument<UserDetails>;
   loggedUser: any;
   constructor(public http: HttpClient, public router: Router, private db: AngularFirestore) {
     this.userscollection = this.db.collection<UserDetails>(configusers.collection_endpoint);
+
   }
 
   // Adding user info
@@ -54,5 +53,6 @@ export class RestService {
       const today = formatDate(new Date(), 'dd-MM-yyyy hh:mm:ss', 'en-US');
       return today;
   }
+
 }
 

@@ -12,10 +12,18 @@
    </ion-item>
    
      
-    
-        <ul>
-            <li *ngFor="let tweet of tweets">{{tweet.t_title}}</li>
-          </ul>
+    <ion-item *ngFor="let tweet of tweets">
+      
+          <ion-label>
+              {{tweet.t_title}}
+            </ion-label>
+            <ion-label>
+              {{tweet.tweetcontent}}
+            </ion-label>
+      
+      <ion-badge>2k</ion-badge>
+    </ion-item>
+        
     
      
 

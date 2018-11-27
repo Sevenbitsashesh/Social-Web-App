@@ -8,6 +8,7 @@ import { RestService } from '../../Rest/rest.service';
 import { Router } from '@angular/router';
 import { TweetModel } from '../../models/tweet_model';
 import { Observable, config } from 'rxjs/Rx';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,12 +18,9 @@ export class UseractivityService {
   loggedUser;
   userscollection;
   usersDoc: AngularFirestoreDocument<UserDetails>;
-  tweet: AngularFirestoreCollection<TweetModel>;
-  tweets: Observable<TweetModel[]>;
-  usersTweets;
-  userDoc: string;
-  tweetDoc: string;
+  tweetscollection: AngularFirestoreCollection<TweetModel>;
   uid;
+  usersTweets = [];
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;
@@ -41,33 +39,26 @@ getUsername() {
   // Get Logged in user email
   this.db.collection('users').ref.where('email', '==', this.loggedUser).onSnapshot(snap => {
     snap.forEach(change => {
+      // Users Profile data set to model
       this.model = change.data();
-      console.log(this.model);
+      // console.log(this.model);
       localStorage.setItem('username', this.model.userid);
-      // Getting Logged users Tweet
-      this.tweet = this.db.collection('users').doc(change.id).collection<TweetModel>(configtweets.collection_endpoint);
-      this.tweet.ref.get().then( function(querySnapshot) {
-         if (querySnapshot.size > 0) {
-             querySnapshot.forEach(function(doc) {
-              // Tweets document ids
-               // console.log(doc.data());
-               this.usersTweets =  doc.data();
-             });
-         }
-      });
       // Getting Logged user id
-      this.uid = change.id;
+       this.uid = change.id;
+        this.getTweets(this.uid);
+
+      // console.log('new', this.uid);
     });
-    console.log(this.model.email);
+    // console.log(this.model.email);
     // Setting Username
     // localStorage.setItem('username', this.model.username);
   });
   // getting users document id
-  this.db.collection('users').ref.get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-       // console.log(doc.id);
-     });
-    });
+  // this.db.collection('users').ref.get().then((snapshot) => {
+  //   snapshot.docs.forEach(doc => {
+  //      // console.log(doc.id);
+  //    });
+  //   });
   }
 
 // Getusernames tweets
@@ -106,6 +97,26 @@ getUsername() {
 //   }
 
 
+  getTweets(uid) {
+
+      // Getting Logged users Tweet
+      this.tweetscollection = this.db.collection('users').doc(uid).collection<TweetModel>(configtweets.collection_endpoint);
+      const observer  = this.tweetscollection.snapshotChanges().
+      pipe(map(docArray => {
+         return docArray.map(data => {
+
+        return ( {tweetcontent: data.payload.doc.data()['tweetcontent'], t_title: data.payload.doc.data()['t_title'],
+        t_date: data.payload.doc.data()['t_date']
+        });
+      });
+    } )
+    ).subscribe(tweets => {
+      [].push.apply(this.usersTweets, tweets);
+      console.log('t:', this.usersTweets);
+    });
+
+
+  }
   // Tweeet create
   createTweet(tweetcontent, t_title) {
     this.tweetmodel = {
@@ -118,10 +129,10 @@ getUsername() {
     console.log(this.loggedUser);
     tweetColl.onSnapshot(snap => {
     snap.forEach(data => {
-      this.tweet.add(this.tweetmodel);
+      this.tweetscollection.add(this.tweetmodel);
     }
     );
     });
-    console.log(this.tweetDoc);
+
   }
 }
