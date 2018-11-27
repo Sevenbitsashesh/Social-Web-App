@@ -1,4 +1,4 @@
-import { Input, Platform } from '@ionic/angular';
+import { Input, Platform, LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { deepEqual } from 'assert';
 import { shallowEqual } from '@angular/router/src/utils/collection';
@@ -44,27 +44,32 @@ export class LoginComponent implements OnInit {
       ]
     };
   constructor(private router: Router, public rest: RestService, public fireauth: AngularFireAuth, public afs: AngularFirestore,
-    formBuilder: FormBuilder, plat: Platform) {
+    formBuilder: FormBuilder, public ldingCotrol: LoadingController) {
      this.rest.checkLogin();
-     console.log('height:', plat.height());
-     console.log('width:', plat.width());
-
-    this.loginForm = formBuilder.group({
+     this.loginForm = formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$'),
         Validators.required
       ])),
       pass: new FormControl('', Validators.compose([
-        // Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}'),
-        Validators.required,
+         // Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}'),
+        Validators.required
       ])),
     });
   }
   loggedin = false;
 
+ async presentLoading() {
+    const loader = await this.ldingCotrol.create({
+      message: 'Please wait..',
+      duration: 5000,
+    });
+    return await loader.present();
+  }
   ngOnInit() {
   }
   getLogin() {
+    this.presentLoading();
      const model = {
       'email': this.loginForm.get('email').value,
       'pass': this.loginForm.get('pass').value,

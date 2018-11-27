@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../Rest/rest.service';
 import 'rxjs/Rx';
 import { Router } from '@angular/router';
-import { UseractivityService } from '../useractivity/useractivity.service';
+
 @Component({
   selector: 'app-usertabs',
   templateUrl: './usertabs.page.html',
@@ -17,6 +17,7 @@ export class UsertabsPage implements OnInit {
      this.username = localStorage.getItem('username');
   }
   logout() {
+    this.restProvider = undefined;
     localStorage.removeItem('usermail');
      localStorage.removeItem('username');
     this.restProvider.checkLogin();

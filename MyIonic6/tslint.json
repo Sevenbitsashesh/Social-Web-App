@@ -3,6 +3,8 @@
     "node_modules/codelyzer"
   ],
   "rules": {
+    "quotemark": [true, "single", "avoid-escape"],
+      "no-var-requires": false,
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
@@ -79,10 +81,10 @@
       "check-whitespace"
     ],
     "prefer-const": true,
-    "quotemark": [
-      true,
-      "single"
-    ],
+    // "quotemark": [
+    //   true,
+    //   "single"
+    // ],
     "radix": true,
     "semicolon": [
       true,
@@ -134,5 +136,5 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "directive-class-suffix": true
-  }
+  }  
 }

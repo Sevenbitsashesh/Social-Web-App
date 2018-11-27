@@ -11,5 +11,7 @@ export class UsersettingComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  profClick() {
+    console.log('profile clicked');
+  }
 }

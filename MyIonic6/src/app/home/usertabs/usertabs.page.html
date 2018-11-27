@@ -2,18 +2,21 @@
 
 <ion-header>
     <ion-toolbar>
-      <ion-title>
-      Welcome {{username}}
-      </ion-title>
+      <ion-icon name="logo-twitter"></ion-icon>
+      
+      Welcome @{{username}}
+      
       <ion-buttons slot="end">
         <ion-button (click)="logout()">Logout</ion-button>
       </ion-buttons>
     </ion-toolbar>
     
   </ion-header>
-  
+<div class="header-top" padding>
 
-<ion-tabs padding>
+</div>
+<div class="tabsDiv" >
+<ion-tabs>
         <ion-tab tab="home"> 
           <ion-router-outlet name="home_tab">
           </ion-router-outlet>  
@@ -28,7 +31,7 @@
           </ion-router-outlet>
         </ion-tab>
       
-        <ion-tab-bar slot="bottom">
+        <ion-tab-bar slot="bottom" class="tab-bar">
            
         
           <ion-tab-button tab="home" href="/tabs/(home_tab:home_tab)">
@@ -47,3 +50,4 @@
           </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
+    </div>
