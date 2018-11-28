@@ -11,7 +11,7 @@ import { UserhomeComponent } from '../userhome/userhome.component';
 import { UsersettingComponent } from '../usersetting/usersetting.component';
 import { HomePage } from './home.page';
 import { UseractivityService } from '../useractivity/useractivity.service';
-
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   imports: [
@@ -23,6 +23,6 @@ import { UseractivityService } from '../useractivity/useractivity.service';
   declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage],
   exports: [ UsertabsPage ],
   bootstrap: [],
-  providers: [ UseractivityService ]
+  providers: [ UseractivityService, Camera ]
 })
 export class UsertabsPageModule {}

@@ -3,21 +3,28 @@
       <div class="divProfile" > 
        
           <ion-avatar class="profile-avatar">
-            <button onclick="profClick()">
-              <img class="profi-pic" src="https://pbs.twimg.com/profile_images/971635378892386304/fqqp4Sru.jpg"/>
+            <button (click)="profClick()" class="ion-button">
+              <!-- <img class="profi-pic" src="https://pbs.twimg.com/profile_images/971635378892386304/fqqp4Sru.jpg"/> -->
+              <ion-img src="{{profileImg}}">
+
+              </ion-img>
+              
             </button>
           </ion-avatar>
-  
+          <label>
+            {{profileImg}}
+          </label>
         </div>
-        
-        
-<div class="divEdit">
+        <div>
+          
+        </div>
+<!-- <div class="divEdit">
       <p>
           <ion-button [routerLink]="['/create']" routerLinkActive="router-link-active" >
             Edit Profiles
           </ion-button>
         </p>
-  </div>
+  </div> -->
 
   
     

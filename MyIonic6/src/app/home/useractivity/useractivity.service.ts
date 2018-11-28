@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { TweetModel } from '../../models/tweet_model';
 import { Observable, config } from 'rxjs/Rx';
 import { map } from 'rxjs/operators';
+import firebase = require('firebase');
 @Injectable({
   providedIn: 'root'
 })
@@ -21,12 +22,14 @@ export class UseractivityService {
   tweetscollection: AngularFirestoreCollection<TweetModel>;
   uid;
   usersTweets = [];
+  storageRef: any;
+  myPhotoURL;
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;
      this.userscollection = rest.userscollection;
       this.getUsername();
-
+    this.storageRef = firebase.storage().ref('/profiles/');
   }
 // Adding user info
 addInfo(model) {
@@ -133,6 +136,12 @@ getUsername() {
     }
     );
     });
-
+  }
+  uploadImage(profilePic) {
+    this.storageRef.child('profilepic1.png')
+    .putString(profilePic, 'base64', { contentType: 'image/png' })
+    .then((savedPicture) => {
+      this.myPhotoURL = savedPicture.downloadURL;
+    });
   }
 }
