@@ -9,7 +9,6 @@ import { Firebase_Config } from '../app/Rest/firebase.cred';
 import { NgModel } from '@angular/forms';
 import firestore from 'firebase/firestore';
 import { Set_Firestore } from '../app/Rest/setting_forestore';
-import * as firebase from 'firebase';
 import { RestService } from './Rest/rest.service';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 

@@ -20,13 +20,14 @@ import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { GlobalErrorService } from './Rest/global_error';
 import { UsertabsPageModule } from './home/usertabs/usertabs.module';
 import { FirstPageModule } from './first/first.module';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 @NgModule({
   declarations: [ AppComponent, LoginComponent, PageNotFoundComponent, CreateComponent],
   entryComponents: [],
   imports: [UsertabsPageModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, FormsModule,
     AngularFireModule.initializeApp(Firebase_Config),
     ReactiveFormsModule,
-    AngularFireDatabaseModule, AngularFirestoreModule, FirstPageModule],
+    AngularFireDatabaseModule, AngularFirestoreModule, FirstPageModule, AngularFireStorageModule],
   exports: [ ],
   providers: [
     StatusBar,

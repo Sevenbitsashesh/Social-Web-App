@@ -1,22 +1,20 @@
 <div class="divhead" padding>
   
       <div class="divProfile" > 
-       
-          <ion-avatar class="profile-avatar">
-            <button (click)="profClick()" class="ion-button">
+        <ion-button (click)="actionForProfile()" class="profile-button">
+          <ion-avatar class="profi-pic">
+            
               <!-- <img class="profi-pic" src="https://pbs.twimg.com/profile_images/971635378892386304/fqqp4Sru.jpg"/> -->
-              <ion-img src="{{profileImg}}">
-
-              </ion-img>
+              <img src={{profileImg}} class="profi-pic"/>
               
-            </button>
+            
           </ion-avatar>
-          <label>
-            {{profileImg}}
-          </label>
+        </ion-button> 
         </div>
         <div>
-          
+      <ion-label>
+        {{profileImg}}
+      </ion-label>
         </div>
 <!-- <div class="divEdit">
       <p>

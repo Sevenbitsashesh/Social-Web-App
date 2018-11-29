@@ -7,7 +7,7 @@ export interface UserDetails {
      gender: string;
      mobile: number;
     // hobbies: string[];
-    // profile_pic: string;
+     profile_pic: string;
      dob: Date;
 }
 export interface SomeType {

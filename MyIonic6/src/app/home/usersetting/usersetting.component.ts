@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions, MediaType } from '@ionic-native/camera/ngx';
 import { UseractivityService } from '../useractivity/useractivity.service';
+import { ActionSheetController } from '@ionic/angular';
+import { async } from 'q';
 @Component({
   selector: 'app-usersetting',
   templateUrl: './usersetting.component.html',
@@ -8,35 +10,62 @@ import { UseractivityService } from '../useractivity/useractivity.service';
 })
 export class UsersettingComponent implements OnInit {
 options: CameraOptions;
-profileImg;
-  constructor(public camera: Camera, public uactivity: UseractivityService ) {
-    this.options  = {
-     quality:  100,
-     allowEdit: true,
-     sourceType: this.camera.PictureSourceType.CAMERA,
-     saveToPhotoAlbum: true,
-     correctOrientation: true,
-     destinationType: camera.DestinationType.FILE_URI,
-     encodingType: camera.EncodingType.JPEG,
-     mediaType: camera.MediaType.PICTURE
-   };
+profileImg: any;
+fname: any;
+upstatus;
+  constructor(public camera: Camera, public uactivity: UseractivityService, public actionsheet: ActionSheetController ) {
   }
 
   ngOnInit() {
   }
-  profClick() {
-    console.log('profile clicked');
-    this.camera.getPicture(this.options).then((imageData) => {
-      // const imgType = 'data:image/jpeg;base64,' + image;
-      // const fname = imageData.substring(imageData.lastindexof('/') + 1);
-      // const path =  imageData.substring(0, imageData.lastIndexOf('/') + 1);
-      // this.profileImg.readAsDataURL(path, fname).then(file => this.profileImg = file );
-      this.profileImg = imageData;
-      if (this.profileImg) {
-          this.uactivity.uploadImage(this.profileImg);
+  async actionForProfile() {
+  const actions = await  this.actionsheet.create({
+      buttons: [{
+        text: 'Camera',
+        icon: 'camera',
+        handler: () => this.captureImage()
+      },
+      {
+        text: 'Choose from Gallary',
+        icon: 'albums',
+        handler: () => this.selectPhoto()
+      },
+      {
+        text: 'Cancel',
+        role: 'cancel'
       }
-    }, (err) =>
-    console.log(err)
-    ) ;
+    ]
+    }
+    );
+  await actions.present();
+  }
+  selectPhoto(): void {
+    this.camera.getPicture({
+      sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      quality: 100,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }).then(imageData => {
+    this.uactivity.uploadPhoto(imageData);
+    }, error => {
+      console.log('error ' + JSON.stringify(error));
+    });
+    this.profileImg = this.uactivity.myPhotoURL;
+  }
+  captureImage() {
+    this.camera.getPicture({
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      encodingType: this.camera.EncodingType.PNG,
+      saveToPhotoAlbum: true
+    }).then(imageData => {
+      this.profileImg = imageData;
+      // this.uactivity.uploadPhoto();
+    }, error => {
+      console.log('error ' + JSON.stringify(error));
+    });
+    this.profileImg = this.uactivity.myPhotoURL;
   }
 }
