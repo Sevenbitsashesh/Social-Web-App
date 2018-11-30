@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { RestService } from '../../Rest/rest.service';
 import { Router } from '@angular/router';
 import { TweetModel } from '../../models/tweet_model';
-import { Observable, config } from 'rxjs/Rx';
+import { Observable, config } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 import * as firebase from 'firebase';
 import { AngularFireStorage } from 'angularfire2/storage';
@@ -23,9 +23,8 @@ export class UseractivityService {
   tweetscollection: AngularFirestoreCollection<TweetModel>;
   uid;
   usersTweets = [];
-  storageRef: any;
-  myPhotoURL: any;
-  stor_task: any;
+  myPhotoURL: Observable<String>;
+  myPhoto;
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore, private fstorage: AngularFireStorage) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;
@@ -45,7 +44,7 @@ getUsername() {
     snap.forEach(change => {
       // Users Profile data set to model
       this.model = change.data();
-      // console.log('model', this.model);
+       console.log('model', this.model);
       localStorage.setItem('username', this.model.userid);
       // Getting Logged user id
        this.uid = change.id;
@@ -141,19 +140,26 @@ getUsername() {
 
   public uploadPhoto(profilepic) {
     const file = 'data:image/jpg;base64,' + profilepic;
-    this.stor_task =  this.fstorage.ref(this.generateUUID() + '.jpg').putString(file, 'data_url').snapshotChanges().pipe(
+    const fileRef =  this.fstorage.ref(this.generateUUID() + '.jpg');
+    const stor_task = fileRef.putString(file, 'data_url');
+    // const donUrl = stor_task.snapshotChanges().pipe(finalize(() => {
+    //     fileRef.getDownloadURL().subscribe(url => {
+    //       this.myPhoto = url;
+    //       console.log(url);
+    //     });
+    // }));
+    stor_task.snapshotChanges().pipe(
       finalize(() => {
-        this.storageRef.getDownloadURL().subscribe(url => {
-        this.myPhotoURL = url;
+        this.myPhotoURL = fileRef.getDownloadURL();
+        this.myPhotoURL.subscribe(url => {
+          if (url) {
+        this.myPhoto = url;
         this.rest.saveProfilePic(url, this.uid);
+          }
         });
-      }));
-    // this.stor_task =  this.fstorage.ref(this.generateUUID() + '.jpg').putString(file, 'data_url').then(snapshot => {
-    //   // this.myPhotoURL = this.stor_task.ref.downloadURL();
-    //   this.myPhotoURL = snapshot.ref.getDownloadURL();
-    //   this.rest.saveProfilePic(this.myPhotoURL, this.uid);
-    // });
-    // return this.myPhotoURL;
+      }
+      )
+    ).subscribe();
   }
   private generateUUID(): any {
     let d = new Date().getTime();
@@ -163,5 +169,8 @@ getUsername() {
       return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
     return uuid;
+  }
+  click() {
+    this.rest.saveProfilePic('hii', this.uid);
   }
 }

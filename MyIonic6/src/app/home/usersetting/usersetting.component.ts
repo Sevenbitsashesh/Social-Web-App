@@ -13,7 +13,10 @@ options: CameraOptions;
 profileImg: any;
 fname: any;
 upstatus;
+profile;
   constructor(public camera: Camera, public uactivity: UseractivityService, public actionsheet: ActionSheetController ) {
+    // console.log(uactivity.model.profile_pic);
+    this.profileImg = uactivity.model.profile_pic;
   }
 
   ngOnInit() {
@@ -51,7 +54,7 @@ upstatus;
     }, error => {
       console.log('error ' + JSON.stringify(error));
     });
-    this.profileImg = this.uactivity.myPhotoURL;
+     this.profileImg = this.uactivity.myPhoto;
   }
   captureImage() {
     this.camera.getPicture({
@@ -67,5 +70,10 @@ upstatus;
       console.log('error ' + JSON.stringify(error));
     });
     this.profileImg = this.uactivity.myPhotoURL;
+    this.profile = this.uactivity.myPhotoURL;
+  }
+  click() {
+    console.log('clicked');
+    this.uactivity.click();
   }
 }

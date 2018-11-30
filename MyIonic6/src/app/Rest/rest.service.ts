@@ -43,9 +43,9 @@ export class RestService {
     const promodel = {
      'profile_pic': img
     };
-    this.callToast();
-    this.db.collection('users/').doc(`${uid}`).update(promodel).then(snap => {
-      this.router.navigate(['/tabs']);
+    this.db.collection('users').doc(`${uid}`).update(promodel).then(snap => {
+      this.callToast();
+      this.router.navigate(['/tabs/(home_tab:home_tab)']);
     });
   }
   // Checking Login
@@ -67,7 +67,7 @@ async callToast() {
   const toast = await this.Toast.create({
     message: 'Profile updated',
     duration: 3000,
-    position: 'bottom'
+    position: 'top'
   });
   toast.present();
 }
