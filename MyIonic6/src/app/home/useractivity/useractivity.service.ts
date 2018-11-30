@@ -140,7 +140,7 @@ getUsername() {
 
   public uploadPhoto(profilepic) {
     const file = 'data:image/jpg;base64,' + profilepic;
-    const fileRef =  this.fstorage.ref(this.generateUUID() + '.jpg');
+    const fileRef =  this.fstorage.ref('/profile/' + this.generateUUID() + '.jpg');
     const stor_task = fileRef.putString(file, 'data_url');
     // const donUrl = stor_task.snapshotChanges().pipe(finalize(() => {
     //     fileRef.getDownloadURL().subscribe(url => {
@@ -170,7 +170,5 @@ getUsername() {
     });
     return uuid;
   }
-  click() {
-    this.rest.saveProfilePic('hii', this.uid);
-  }
+
 }

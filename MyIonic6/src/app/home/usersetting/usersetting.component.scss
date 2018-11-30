@@ -1,7 +1,7 @@
 .profi-pic {
     height: 100px;
     width: 100px;
-    background: #975d5d;
+    background: rgb(72, 115, 166);
 }
 .divProfile {
      display: block;
@@ -9,7 +9,8 @@
    margin-right: auto;
    width: 140px;
    height: 100px;
-   background: white;
+   background: rgb(72, 115, 166);
+   
 }
 // .divEdit {
 //     height: 100px;
@@ -19,11 +20,12 @@
 //     margin-right: auto;
 // }
 .divhead {
-    height: 100px;
+    height: 150px;
     width: 100%;
-    background: #975d5d;
+    background: rgb(72, 115, 166);
     align-content: center;
     padding-top: 100px;
+    border-radius: 10px 10px 10px 10px;
 }
 .profile-avatar {
     height: 100%;
@@ -33,4 +35,9 @@
     --height: 100%;
     --width: 100%;
     --background:white;
+}
+.div-profile {
+    height: 100%;
+    width: 100%;
+    background: rgb(64, 73, 150);
 }

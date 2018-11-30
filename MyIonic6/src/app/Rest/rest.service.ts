@@ -14,8 +14,7 @@ export class RestService {
   model: UserDetails;
   userscollection: AngularFirestoreCollection<UserDetails>;
   loggedUser: any;
-  Toast: ToastController;
-  constructor(public http: HttpClient, public router: Router, private db: AngularFirestore) {
+  constructor(public http: HttpClient, public router: Router, private db: AngularFirestore, public Toast: ToastController) {
     this.userscollection = this.db.collection<UserDetails>(configusers.collection_endpoint);
 
   }
@@ -44,7 +43,7 @@ export class RestService {
      'profile_pic': img
     };
     this.db.collection('users').doc(`${uid}`).update(promodel).then(snap => {
-      this.callToast();
+      this.callToast('Profile Pic Updated');
       this.router.navigate(['/tabs/(home_tab:home_tab)']);
     });
   }
@@ -63,9 +62,9 @@ export class RestService {
       const today = formatDate(new Date(), 'dd-MM-yyyy hh:mm:ss', 'en-US');
       return today;
   }
-async callToast() {
+async callToast(msg) {
   const toast = await this.Toast.create({
-    message: 'Profile updated',
+    message: msg,
     duration: 3000,
     position: 'top'
   });

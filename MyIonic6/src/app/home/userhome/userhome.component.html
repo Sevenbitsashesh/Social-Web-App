@@ -11,19 +11,25 @@
       
    </ion-item>
    
-     
-    <ion-item *ngFor="let tweet of tweets">
-      
-          <ion-label>
-              {{tweet.t_title}}
-            </ion-label>
-            <ion-label>
-              {{tweet.tweetcontent}}
-            </ion-label>
-      
-      <ion-badge>2k</ion-badge>
-    </ion-item>
+
+   <ion-card *ngFor="let tweet of tweets">
+      <ion-card-header>
         
+        <ion-card-title>{{tweet.t_title}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+          {{tweet.tweetcontent}}
+        
+      </ion-card-content>
+      <ion-button (click)="click()">
+          <ion-badge>
+              <!-- {{tweet.likes}} -->
+              2k
+          </ion-badge>
+      </ion-button>
+    </ion-card>
+ 
     
      
 

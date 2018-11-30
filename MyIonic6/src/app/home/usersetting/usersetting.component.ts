@@ -11,9 +11,6 @@ import { async } from 'q';
 export class UsersettingComponent implements OnInit {
 options: CameraOptions;
 profileImg: any;
-fname: any;
-upstatus;
-profile;
   constructor(public camera: Camera, public uactivity: UseractivityService, public actionsheet: ActionSheetController ) {
     // console.log(uactivity.model.profile_pic);
     this.profileImg = uactivity.model.profile_pic;
@@ -46,8 +43,8 @@ profile;
     this.camera.getPicture({
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
       destinationType: this.camera.DestinationType.DATA_URL,
-      quality: 100,
-      encodingType: this.camera.EncodingType.JPEG,
+      quality: 20,
+      encodingType: this.camera.EncodingType.JPEG || this.camera.EncodingType.PNG,
       mediaType: this.camera.MediaType.PICTURE
     }).then(imageData => {
     this.uactivity.uploadPhoto(imageData);
@@ -58,22 +55,18 @@ profile;
   }
   captureImage() {
     this.camera.getPicture({
-      quality: 100,
+      quality: 20,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.CAMERA,
       encodingType: this.camera.EncodingType.PNG,
       saveToPhotoAlbum: true
     }).then(imageData => {
       this.profileImg = imageData;
-      // this.uactivity.uploadPhoto();
+       this.uactivity.uploadPhoto(imageData);
     }, error => {
       console.log('error ' + JSON.stringify(error));
     });
     this.profileImg = this.uactivity.myPhotoURL;
-    this.profile = this.uactivity.myPhotoURL;
   }
-  click() {
-    console.log('clicked');
-    this.uactivity.click();
-  }
+ 
 }
