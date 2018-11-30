@@ -25,7 +25,6 @@ export class UserhomeComponent implements OnInit {
      console.log('data :', this.tweets );
   }
   ngOnInit() {
-
   }
   click() {
     this.callToast('this is toast');

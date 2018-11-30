@@ -1,0 +1,16 @@
+<ion-content padding>
+  
+</ion-content>
+
+<div>
+    <ion-item *ngFor="let user of u">
+    
+        <label>
+          {{user.userid}}
+        </label>
+      </ion-item>
+</div>
+<ion-searchbar padding  showCancelButton [(ngModel)]="search_content">
+    
+  </ion-searchbar>
+  

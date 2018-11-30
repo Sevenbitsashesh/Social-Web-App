@@ -68,5 +68,5 @@ profileImg: any;
     });
     this.profileImg = this.uactivity.myPhotoURL;
   }
- 
+
 }

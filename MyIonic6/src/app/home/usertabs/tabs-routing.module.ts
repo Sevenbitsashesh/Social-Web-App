@@ -4,6 +4,7 @@ import { UsertabsPage } from './usertabs.page';
 import { UserhomeComponent } from '../userhome/userhome.component';
 import { UsersettingComponent } from '../usersetting/usersetting.component';
 import { HomePage } from './home.page';
+import { SearchComponent } from '../search/search.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,11 @@ const routes: Routes = [
       path: 'setting_tab',
       outlet: 'setting_tab',
       component: UsersettingComponent
+    },
+    {
+      path: 'search_tab',
+      outlet: 'search_tab',
+      component: SearchComponent
     }
   ]
 },

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
@@ -12,15 +12,18 @@ import { UsersettingComponent } from '../usersetting/usersetting.component';
 import { HomePage } from './home.page';
 import { UseractivityService } from '../useractivity/useractivity.service';
 import { Camera } from '@ionic-native/camera/ngx';
+import { CreateComponent } from '../create/create.component';
+import { SearchComponent } from '../search/search.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TabRoutingmodule
+    TabRoutingmodule,
+    ReactiveFormsModule
   ],
-  declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage],
+  declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage, CreateComponent, SearchComponent],
   exports: [ UsertabsPage ],
   bootstrap: [],
   providers: [ UseractivityService, Camera ]
