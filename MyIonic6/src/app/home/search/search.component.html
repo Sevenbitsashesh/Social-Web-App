@@ -3,14 +3,14 @@
 </ion-content>
 
 <div>
-    <ion-item *ngFor="let user of u">
-    
+    <ion-item *ngFor="let user of search">
         <label>
-          {{user.userid}}
+         @ {{user}}
         </label>
+        
       </ion-item>
 </div>
-<ion-searchbar padding  showCancelButton [(ngModel)]="search_content">
+<ion-searchbar padding  showCancelButton [(ngModel)]="search_content" (ionChange)="onInput()" id="search_content">
     
   </ion-searchbar>
   

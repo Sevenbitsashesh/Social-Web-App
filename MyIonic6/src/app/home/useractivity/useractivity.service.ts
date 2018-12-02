@@ -175,10 +175,11 @@ getUsername() {
     const u = [];
      this.db.collection('users').get().forEach(data => {
     console.log(data.forEach(user => {
-      u.push(user.data());
+      u.push(user.data().userid);
     }));
      });
-     return u;
+     
+      return u;
    //  const us = u.find.name
   }
 }
