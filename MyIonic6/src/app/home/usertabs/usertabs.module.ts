@@ -14,6 +14,7 @@ import { UseractivityService } from '../useractivity/useractivity.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { CreateComponent } from '../create/create.component';
 import { SearchComponent } from '../search/search.component';
+import { ProfileviewComponent } from '../profileview/profileview.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { SearchComponent } from '../search/search.component';
     TabRoutingmodule,
     ReactiveFormsModule
   ],
-  declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage, CreateComponent, SearchComponent],
+  declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage, CreateComponent, SearchComponent, ProfileviewComponent],
   exports: [ UsertabsPage ],
   bootstrap: [],
   providers: [ UseractivityService, Camera ]

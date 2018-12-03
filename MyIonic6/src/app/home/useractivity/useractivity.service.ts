@@ -178,8 +178,10 @@ getUsername() {
       u.push(user.data().userid);
     }));
      });
-     
       return u;
    //  const us = u.find.name
+  }
+  searchData(data) {
+       console.log('data searching for', data);
   }
 }

@@ -5,6 +5,7 @@ import { UserhomeComponent } from '../userhome/userhome.component';
 import { UsersettingComponent } from '../usersetting/usersetting.component';
 import { HomePage } from './home.page';
 import { SearchComponent } from '../search/search.component';
+import { ProfileviewComponent } from '../profileview/profileview.component';
 
 
 const routes: Routes = [
@@ -22,11 +23,18 @@ const routes: Routes = [
     {
       path: 'search_tab',
       outlet: 'search_tab',
-      component: SearchComponent
+       component: SearchComponent,
+       children: [
+         {
+           path: 'profileview',
+           outlet: 'profileview',
+           component: ProfileviewComponent
+         }
+       ]
     }
   ]
 },
-{ path: 'searchview', loadChildren: './home/searchview/searchview.module#SearchviewPageModule' },
+ // { path: 'profileview', component: ProfileviewComponent },
 // {
 //   path: '',
 //   redirectTo: '/tabs/(home_tab:home_tab)',
