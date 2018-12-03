@@ -26,6 +26,7 @@ const routes: Routes = [
     }
   ]
 },
+{ path: 'searchview', loadChildren: './home/searchview/searchview.module#SearchviewPageModule' },
 // {
 //   path: '',
 //   redirectTo: '/tabs/(home_tab:home_tab)',

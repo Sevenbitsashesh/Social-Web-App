@@ -4,9 +4,14 @@
 
 <div>
     <ion-item *ngFor="let user of search">
-        <label>
-         @ {{user}}
-        </label>
+        <router-outlet>
+
+        </router-outlet>
+            <ion-button color="white" fill="outline" (click)="goSearchView(user)">
+            @{{user}}
+          </ion-button>
+        
+         
         
       </ion-item>
 </div>
