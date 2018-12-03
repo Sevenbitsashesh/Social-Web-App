@@ -16,7 +16,6 @@ export class RestService {
   loggedUser: any;
   constructor(public http: HttpClient, public router: Router, private db: AngularFirestore, public Toast: ToastController) {
     this.userscollection = this.db.collection<UserDetails>(configusers.collection_endpoint);
-
   }
 
   // Adding user info
@@ -70,5 +69,6 @@ async callToast(msg) {
   });
   toast.present();
 }
+
 }
 

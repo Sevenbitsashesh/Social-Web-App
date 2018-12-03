@@ -1,4 +1,5 @@
-export interface UserDetails {
+import { TweetModel } from './tweet_model';
+export class UserDetails  {
     // userid: string;
     username: string;
     password: string;
@@ -12,4 +13,8 @@ export interface UserDetails {
 }
 export interface SomeType {
     count: number;
+  }
+  export interface UserProfile {
+      UserDetails: UserDetails;
+      UsersTweets: TweetModel;
   }

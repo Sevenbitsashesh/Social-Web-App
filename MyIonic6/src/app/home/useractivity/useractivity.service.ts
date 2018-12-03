@@ -25,7 +25,7 @@ export class UseractivityService {
   usersTweets = [];
   myPhotoURL: Observable<String>;
   myPhoto;
-  users;
+  usersearched;
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore, private fstorage: AngularFireStorage) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;
@@ -175,13 +175,13 @@ getUsername() {
     const u = [];
      this.db.collection('users').get().forEach(data => {
     console.log(data.forEach(user => {
-      u.push(user.data().userid);
+      u.push(user.data());
     }));
      });
       return u;
    //  const us = u.find.name
   }
   searchData(data) {
-       console.log('data searching for', data);
+       // console.log('data searching for', data);
   }
 }

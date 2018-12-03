@@ -8,12 +8,13 @@ import { UseractivityService } from '../useractivity/useractivity.service';
 })
 export class ProfileviewComponent implements OnInit {
 @Input() searchdata;
+content;
   constructor(public uactivity: UseractivityService) {
-
-      uactivity.searchData(this.searchdata);
   }
 
   ngOnInit() {
   }
-
+  getUser() {
+    this.uactivity.searchData(this.searchdata);
+  }
 }

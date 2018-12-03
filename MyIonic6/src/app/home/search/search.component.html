@@ -9,10 +9,10 @@
     <div>
         <ion-item *ngFor="let user of search">
           <ion-avatar slot="start">
-            <img [src]="">
+            <img [src]="user.profile_pic">
           </ion-avatar>      
-          <ion-button color="white" fill="outline" (click)="goSearchView(user)">
-                @{{user}}
+          <ion-button color="white" fill="outline" (click)="goSearchView(user.userid)">
+                @{{user.userid}}
               </ion-button>
           </ion-item>
     </div>
