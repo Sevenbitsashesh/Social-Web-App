@@ -37,9 +37,6 @@ export class SearchviewComponent implements OnInit {
  console.log('selected user:', user);
   this.search_content = user;
  this.searchdata = user;
- this.navParam.data = {
-   'search': this.searchdata
- };
  this.navcontroller.navigateRoot('/tabs/(view_tab:view_tab)');
    }
 }

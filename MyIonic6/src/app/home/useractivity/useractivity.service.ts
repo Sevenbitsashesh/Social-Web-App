@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { RestService } from '../../Rest/rest.service';
 import { Router } from '@angular/router';
 import { TweetModel } from '../../models/tweet_model';
-import { Observable, config } from 'rxjs';
+import { Observable, config, Subject, BehaviorSubject } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 import * as firebase from 'firebase';
 import { AngularFireStorage } from 'angularfire2/storage';
@@ -26,7 +26,6 @@ export class UseractivityService {
   myPhotoURL: Observable<String>;
   myPhoto;
   usersearched;
-  node: Node;
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore, private fstorage: AngularFireStorage) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;

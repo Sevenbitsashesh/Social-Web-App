@@ -5,7 +5,6 @@ import { Subject, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataserviceService {
-node: Subject<Node> = new BehaviorSubject<Node>(node);
   constructor() {
 
   }

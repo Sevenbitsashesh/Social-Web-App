@@ -10,7 +10,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
 export class ViewPage implements OnInit {
 @Input() searchdata = 'IAshesh40';
   constructor(uactivity: UseractivityService) {
-    const node: Subject<UseractivityService> = new BehaviorSubject<UseractivityService>(uactivity);
+    const  node: Subject<UseractivityService> = new BehaviorSubject<UseractivityService>(uactivity);
     uactivity.searchData(this.searchdata);
    }
 
