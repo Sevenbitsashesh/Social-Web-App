@@ -13,8 +13,7 @@ export class SearchviewComponent implements OnInit {
   search = [];
   search_content: string;
   searchdata;
-  nav: Nav;
-  constructor(public uactivity: UseractivityService, public navcontroller: NavController, public navParam: NavParams) {
+  constructor(public uactivity: UseractivityService, public navcontroller: NavController) {
     this.u = uactivity.getAllUsers();
     console.log('users coll', this.u);
   }

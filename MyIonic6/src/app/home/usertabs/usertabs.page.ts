@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./usertabs.page.scss'],
 })
 export class UsertabsPage implements OnInit {
-  @Input() profileCom;
   users: any;
   username: any;
   constructor(public restProvider: RestService, public route: Router) {

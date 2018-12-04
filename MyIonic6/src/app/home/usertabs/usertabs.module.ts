@@ -17,7 +17,6 @@ import { SearchComponent } from '../search/search.component';
 import { ProfileviewComponent } from '../profileview/profileview.component';
 import { SearchviewComponent } from '../searchview/searchview.component';
 import { ViewPageModule } from '../view/view.module';
-import { DataserviceService } from '../../shared/dataservice.service';
 
 @NgModule({
   imports: [
@@ -32,6 +31,6 @@ import { DataserviceService } from '../../shared/dataservice.service';
     SearchviewComponent],
   exports: [ UsertabsPage ],
   bootstrap: [],
-  providers: [ UseractivityService, Camera, DataserviceService ]
+  providers: [ UseractivityService, Camera ]
 })
 export class UsertabsPageModule {}

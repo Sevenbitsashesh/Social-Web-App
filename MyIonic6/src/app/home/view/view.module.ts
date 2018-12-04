@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, Input } from '@ionic/angular';
 
 import { ViewPage } from './view.page';
+import { HomePage } from '../usertabs/home.page';
 
 const routes: Routes = [
   {
@@ -21,6 +22,12 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ViewPage]
+  declarations: [ViewPage],
+  bootstrap: [ViewPage]
 })
-export class ViewPageModule {}
+
+export class ViewPageModule implements OnInit {
+  ngOnInit() {
+
+  }
+}

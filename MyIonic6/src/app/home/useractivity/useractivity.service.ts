@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { RestService } from '../../Rest/rest.service';
 import { Router } from '@angular/router';
 import { TweetModel } from '../../models/tweet_model';
-import { Observable, config, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, config } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 import * as firebase from 'firebase';
 import { AngularFireStorage } from 'angularfire2/storage';

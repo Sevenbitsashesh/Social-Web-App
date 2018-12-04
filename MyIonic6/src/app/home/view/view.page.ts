@@ -8,10 +8,10 @@ import { Subject, BehaviorSubject } from 'rxjs';
   styleUrls: ['./view.page.scss'],
 })
 export class ViewPage implements OnInit {
-@Input() searchdata = 'IAshesh40';
+// @Input() searchdata = 'IAshesh40';
   constructor(uactivity: UseractivityService) {
-    const  node: Subject<UseractivityService> = new BehaviorSubject<UseractivityService>(uactivity);
-    uactivity.searchData(this.searchdata);
+   // const  node: Subject<UseractivityService> = new BehaviorSubject<UseractivityService>(uactivity);
+   // uactivity.searchData(this.searchdata);
    }
 
   ngOnInit() {
