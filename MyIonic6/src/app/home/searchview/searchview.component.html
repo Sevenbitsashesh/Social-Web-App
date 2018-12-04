@@ -1,4 +1,4 @@
-
+<router-outlet>
 <ion-content padding>
     
     <ion-searchbar padding  showCancelButton [(ngModel)]="search_content" (ionChange)="onInput()" id="search_content">
@@ -9,18 +9,21 @@
           <ion-avatar slot="start">
             <img [src]="user.profile_pic">
           </ion-avatar>      
-          <ion-button color="white" fill="outline" (click)="goSearchView(user.userid)">
+          <!-- <ion-button color="white" fill="outline" (click)="goSearchView(user.userid)">
                 @{{user.userid}}
-              </ion-button>
+              </ion-button> -->
+              <nav>
+                <a routerLink="/profileview/{{user.userid}}">{{user.userid}}</a>
+              </nav>
           </ion-item>
     </div>
     <div>
-      <router-outlet>
+      
         
-      </router-outlet>
+    
     </div>
 
   </ion-content>
   
   
-    
+</router-outlet>

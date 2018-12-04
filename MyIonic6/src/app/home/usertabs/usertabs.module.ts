@@ -16,7 +16,7 @@ import { CreateComponent } from '../create/create.component';
 import { SearchComponent } from '../search/search.component';
 import { ProfileviewComponent } from '../profileview/profileview.component';
 import { SearchviewComponent } from '../searchview/searchview.component';
-import { ViewPageModule } from '../view/view.module';
+import { ViewPage } from '../view/view.page';
 
 @NgModule({
   imports: [
@@ -24,11 +24,10 @@ import { ViewPageModule } from '../view/view.module';
     FormsModule,
     IonicModule,
     TabRoutingmodule,
-    ReactiveFormsModule,
-    ViewPageModule
+    ReactiveFormsModule
   ],
   declarations: [UserhomeComponent, UsersettingComponent, UsertabsPage, HomePage, CreateComponent, SearchComponent, ProfileviewComponent,
-    SearchviewComponent],
+    SearchviewComponent, ViewPage],
   exports: [ UsertabsPage ],
   bootstrap: [],
   providers: [ UseractivityService, Camera ]

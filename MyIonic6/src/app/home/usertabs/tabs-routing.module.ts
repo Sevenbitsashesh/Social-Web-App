@@ -7,7 +7,7 @@ import { HomePage } from './home.page';
 import { SearchComponent } from '../search/search.component';
 import { ProfileviewComponent } from '../profileview/profileview.component';
 import { SearchviewComponent } from '../searchview/searchview.component';
-import { ViewPageModule } from '../view/view.module';
+import { ViewPage } from '../view/view.page';
 
 const routes: Routes = [
   { path: 'tabs', component: UsertabsPage, children: [
@@ -24,17 +24,17 @@ const routes: Routes = [
     {
       path: 'view_tab',
       outlet: 'view_tab',
-      loadChildren: '../view/view.module#ViewPageModule'
+      component: ViewPage
     },
     {
       path: 'search_tab',
       outlet: 'search_tab',
        component: SearchComponent,
-    },
-    { path: 'profileview', component: ProfileviewComponent},
- { path: 'searchview', component: SearchviewComponent},
+    }
   ]
 },
+{ path: 'profileview/:id', component: ProfileviewComponent},
+ { path: 'searchview', component: SearchviewComponent},
 // {
 //   path: '',
 //   redirectTo: '/tabs/(home_tab:home_tab)',
