@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RestService } from '../../Rest/rest.service';
 import 'rxjs/Rx';
 import { Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./usertabs.page.scss'],
 })
 export class UsertabsPage implements OnInit {
+  @Input() profileCom;
   users: any;
   username: any;
   constructor(public restProvider: RestService, public route: Router) {

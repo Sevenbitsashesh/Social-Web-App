@@ -26,6 +26,7 @@ export class UseractivityService {
   myPhotoURL: Observable<String>;
   myPhoto;
   usersearched;
+  node: Node;
   constructor(public http: HttpClient, public rest: RestService, private db: AngularFirestore, private fstorage: AngularFireStorage) {
     this.model = rest.model;
      this.loggedUser = rest.loggedUser;
@@ -182,6 +183,6 @@ getUsername() {
    //  const us = u.find.name
   }
   searchData(data) {
-       // console.log('data searching for', data);
+        console.log('data searching for', data);
   }
 }

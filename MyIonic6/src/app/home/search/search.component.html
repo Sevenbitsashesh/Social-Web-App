@@ -1,26 +1,5 @@
-<ion-header padding>
 
-</ion-header>
-<ion-content padding>
-    
-    <ion-searchbar padding  showCancelButton [(ngModel)]="search_content" (ionChange)="onInput()" id="search_content">
-        
-      </ion-searchbar>
-    <div>
-        <ion-item *ngFor="let user of search">
-          <ion-avatar slot="start">
-            <img [src]="user.profile_pic">
-          </ion-avatar>      
-          <ion-button color="white" fill="outline" (click)="goSearchView(user.userid)">
-                @{{user.userid}}
-              </ion-button>
-          </ion-item>
-    </div>
-    <div *ngIf="search_content">
-        <app-profileview [searchdata]="search_content"></app-profileview>
-    </div>
+<ion-router-outlet>
+<app-searchview></app-searchview>
 
-  </ion-content>
-  
-  
-    
+</ion-router-outlet>

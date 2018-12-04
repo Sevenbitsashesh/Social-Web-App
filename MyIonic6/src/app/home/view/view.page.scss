@@ -1,0 +1,37 @@
+.divMainBody {
+    height:100%;
+    width: 100%;
+    background: cornflowerblue;
+    top: 0px;
+    position: absolute;
+    
+}
+.divMain {
+    height:10%;
+    width: 100%;
+    align-content: center;
+}
+
+.profile {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100px;
+    width: 100px;
+    background: yellow;
+}
+.info {
+    width: 100%;
+    height: 100px;
+    background: cornflowerblue;
+}
+.divproName {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    height: auto;
+    width: 100px;
+}
+ion-label {
+    color: rgba(1, 82, 82, 0.767);
+}

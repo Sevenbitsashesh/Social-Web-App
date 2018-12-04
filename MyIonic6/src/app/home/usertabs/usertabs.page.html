@@ -1,20 +1,7 @@
 
 
-<ion-header>
-  
-    <ion-toolbar color="primary">
-      <ion-icon name="logo-twitter"></ion-icon>
-      
-      Welcome @{{username}}
-      
-      <ion-buttons slot="end">
-        <ion-button (click)="logout()">Logout</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  
-  </ion-header>
 
-<div class="tabsDiv" >
+<div class="tabsDiv">
 <ion-tabs>
         <ion-tab tab="home"> 
           <ion-router-outlet name="home_tab">
@@ -26,7 +13,7 @@
         <ion-tab tab="search"><ion-router-outlet name="search_tab">
           </ion-router-outlet>
         </ion-tab>
-        <ion-tab tab="aboutus"><ion-router-outlet name="aboutus_tab">
+        <ion-tab tab="view"><ion-router-outlet name="view_tab">
           </ion-router-outlet>
         </ion-tab>
       
@@ -34,18 +21,18 @@
            
         
           <ion-tab-button tab="home" href="/tabs/(home_tab:home_tab)">
-            <ion-label>Home</ion-label>
             <ion-icon name="home"></ion-icon>
           </ion-tab-button>
       
           <ion-tab-button tab="search" href="/tabs/(search_tab:search_tab)">
-            <ion-label>Search</ion-label>
             <ion-icon name="search"></ion-icon>
           </ion-tab-button>
 
+          <ion-tab-button tab="view" href="/tabs/(view_tab:view_tab)">
+            <ion-icon name="book"></ion-icon>
+          </ion-tab-button>
           <ion-tab-button tab="settings" href="/tabs/(setting_tab:setting_tab)">
-            <ion-label>Settings</ion-label>
-            <ion-icon name="settings"></ion-icon>
+            <ion-icon name="person"></ion-icon>
           </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
